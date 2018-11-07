@@ -381,15 +381,21 @@ public class SimpleWebCommentActivity extends BaseActivity<ActivityHomeWebCommen
 //                        }
 //                    });
                     final EditText editText = binding.includeSendComment.etCommentContent;
-                    ZClient.getService(SportService.class).sendCommentCommet(sendId, editText.getText().toString(), toUser, type).enqueue(new ZCallback<ZResponse<String>>(this) {
+                    ZClient.getService(SportService.class).sendCommentCommet(sendId, editText.getText().toString(), toUser, type).enqueue(new ZCallback<ZResponse<ArticleCommentBean>>() {
                         @Override
-                        public void onSuccess(ZResponse<String> data) {
+                        public void onSuccess(ZResponse<ArticleCommentBean> data) {
                             ToastUtil.toast("评论成功");
                             commentId = 0;
                             toUser = "";
                             editText.setText("");
                             CommonUtils.hideSoftInput(editText.getContext(), binding.includeSendComment.etCommentContent);
                             reqDetail();
+                        }
+
+                        @Override
+                        protected void onFinish(Call<ZResponse<ArticleCommentBean>> call) {
+                            super.onFinish(call);
+                            dismissLoadingDialog();
                         }
                     });
                 }
