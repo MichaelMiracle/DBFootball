@@ -87,7 +87,7 @@ public class MeFragment extends BaseFragment<F4Ddz2Binding> {
                 @Override
                 public void onSuccess(ZResponse<UserInfoBean> data) {
                     userInfo = data.getData();
-                    binding.tvName.setText(userInfo.getNickname());
+                    binding.tvName.setText(userInfo.getNickname()+"\n"+userInfo.getUsername());
                     GlideApp.with(mContext).load(userInfo.getImg()).placeholder(R.mipmap.default_head).into(binding.ivHeadImg);
                 }
             });
