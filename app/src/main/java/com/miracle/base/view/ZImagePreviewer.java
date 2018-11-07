@@ -26,14 +26,6 @@ public class ZImagePreviewer extends Dialog {
     private ImageDialogBinding binding;
     private ImageAdapter mAdapter;
 
-    private static ZImagePreviewer instance;
-
-    public static ZImagePreviewer getInstance(Context context) {
-        if (instance == null) {
-            instance = new ZImagePreviewer(context);
-        }
-        return instance;
-    }
 
     public ZImagePreviewer(@NonNull Context context) {
         super(context, R.style.commondialog);

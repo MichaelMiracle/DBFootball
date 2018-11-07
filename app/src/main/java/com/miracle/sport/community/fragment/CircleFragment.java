@@ -26,6 +26,8 @@ import java.util.List;
 public class CircleFragment extends BaseFragment<RecyclerBinding> {
 
     private CircleChildAdapter mAdapter;
+    private boolean isFromPublishPostActivity;
+
 
     @Override
     public int getLayout() {
@@ -44,17 +46,21 @@ public class CircleFragment extends BaseFragment<RecyclerBinding> {
             public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
                 if (view.getId() == R.id.tvCheck) {
                     CircleBean.ChildBean item = mAdapter.getItem(position);
-                    ZClient.getService(SportService.class).addCircle(item.getId(), item.getFollow() == 1 ? 0 : 1).enqueue(addCircleCallback);
+                    ZClient.getService(SportService.class).addCircle(item.getId(), item.getFollow() == 1 ? "qx" : null).enqueue(addCircleCallback);
+
                 }
             }
         });
         mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                Intent data = new Intent();
-                data.putExtra("ChildBean", mAdapter.getItem(position));
-                getActivity().setResult(Activity.RESULT_OK, data);
-                getActivity().finish();
+                if (isFromPublishPostActivity) {
+                    Intent data = new Intent();
+                    data.putExtra("ChildBean", mAdapter.getItem(position));
+                    getActivity().setResult(Activity.RESULT_OK, data);
+                    getActivity().finish();
+                }
+
             }
         });
     }
@@ -77,6 +83,7 @@ public class CircleFragment extends BaseFragment<RecyclerBinding> {
     }
 
     public void setBoolean(boolean isFromPublishPostActivity) {
+        this.isFromPublishPostActivity = isFromPublishPostActivity;
         mAdapter.setBoolean(isFromPublishPostActivity);
     }
 }

@@ -1,5 +1,6 @@
 package com.miracle.sport.community.adapter;
 
+import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -25,9 +26,13 @@ public class PostListAdapter extends RecyclerViewAdapter<PostBean> {
     private LinearLayout.LayoutParams params;
     private int colorLike;
     private int colorDislike;
+    private Context context;
+    private ZImagePreviewer zImagePreviewer;
 
-    public PostListAdapter() {
+    public PostListAdapter(Context context) {
         super(R.layout.item_post);
+        this.context = context;
+        zImagePreviewer = new ZImagePreviewer(context);
         params = new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1);
         params.setMargins(2, 0, 2, 0);
         colorLike = CommonUtils.getColor(R.color.red_ball);
@@ -39,7 +44,7 @@ public class PostListAdapter extends RecyclerViewAdapter<PostBean> {
         helper.addOnClickListener(R.id.tvLike);
 
         helper.setText(R.id.tvUserName, item.getNickname());
-        GlideApp.with(ContextHolder.getContext()).load(item.getImg()).placeholder(R.mipmap.defaule_img).into((ImageView) helper.getView(R.id.ivUserImg));
+        GlideApp.with(context).load(item.getImg()).placeholder(R.mipmap.defaule_img).into((ImageView) helper.getView(R.id.ivUserImg));
 
         helper.setText(R.id.tvTitle, item.getTitle());
         helper.setText(R.id.tvComment, item.getComment_num() + "");
@@ -55,12 +60,12 @@ public class PostListAdapter extends RecyclerViewAdapter<PostBean> {
         if (thumbs != null && !thumbs.isEmpty()) {
             helper.setGone(R.id.llPics, true);
             for (int i = 0; i < thumbs.size(); i++) {
-                ImageView imageView = new ImageView(ContextHolder.getContext());
+                ImageView imageView = new ImageView(context);
                 imageView.setLayoutParams(params);
                 imageView.setAdjustViewBounds(true);
-                imageView.setMaxHeight((int) DisplayUtil.dip2px(ContextHolder.getContext(), 200));
+                imageView.setMaxHeight((int) DisplayUtil.dip2px(context, 200));
                 imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-                GlideApp.with(ContextHolder.getContext()).load(thumbs.get(i))
+                GlideApp.with(context).load(thumbs.get(i))
                         .placeholder(R.mipmap.defaule_img)
                         .error(R.mipmap.empty)
                         .into(imageView);
@@ -69,7 +74,7 @@ public class PostListAdapter extends RecyclerViewAdapter<PostBean> {
                 imageView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        ZImagePreviewer.getInstance(mContext).show(item.getThumb(), finalI);
+                        zImagePreviewer.show(item.getThumb(), finalI);
                     }
                 });
                 container.addView(imageView);

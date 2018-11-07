@@ -59,8 +59,8 @@
                             android:id="@+id/recyclerView"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            app:layoutManager="android.support.v7.widget.LinearLayoutManager">
+                            app:spanCount="5"
+                            app:layoutManager="android.support.v7.widget.GridLayoutManager">
 
                         </android.support.v7.widget.RecyclerView>
                     </LinearLayout>

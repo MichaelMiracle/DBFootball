@@ -42,7 +42,7 @@ public class LatestPostFragment extends BaseFragment<FragmentHotpostBinding> {
 
     @Override
     public void initView() {
-        binding.recyclerView.setAdapter(mAdapter = new PostListAdapter());
+        binding.recyclerView.setAdapter(mAdapter = new PostListAdapter(mContext));
         initCallback();
     }
 

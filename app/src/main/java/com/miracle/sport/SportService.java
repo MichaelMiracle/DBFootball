@@ -38,14 +38,14 @@ public interface SportService {
      * @param pageSize 每页数量
      */
     @Headers({"BaseUrl:zh"})
-    @POST("home/Goodcaipiao/tieList")
+    @POST("home/sports/tieziList")
     Call<ZResponse<List<PostBean>>> getPostList(@Query("type") String type, @Query("class_id") Integer class_id, @Query("page") int page, @Query("pageSize") int pageSize);
 
     /**
      * 帖子详情
      */
     @Headers({"BaseUrl:zh"})
-    @POST("home/Goodcaipiao/circleDetail")
+    @POST("home/sports/circleDetail")
     Call<ZResponse<PostDetailBean>> getPostDetail(@Query("id") int id);
 
 
@@ -54,7 +54,7 @@ public interface SportService {
      */
     @Headers({"BaseUrl:zh"})
     @Multipart
-    @POST("home/Goodcaipiao/sendTie")
+    @POST("home/sports/sendCircle")
     Call<ZResponse> publishPost(@Query("class_id") int class_id, @Query("title") String title, @Query("content") String content, @Part() List<MultipartBody.Part> imgs);
 
 
@@ -216,7 +216,7 @@ public interface SportService {
      * 我的发帖
      */
     @Headers({"BaseUrl:zh"})
-    @POST("home/Goodcaipiao/myPost")
+    @POST("home/sports/myPost")
     Call<ZResponse<List<PostBean>>> getMyPostList(@Query("page") int page, @Query("pageSize") int pageSize);
 
     /**
@@ -230,14 +230,14 @@ public interface SportService {
      * 我的圈子
      */
     @Headers({"BaseUrl:zh"})
-    @POST("home/Goodcaipiao/myCircle")
+    @POST("home/sports/myCircle")
     Call<ZResponse<List<MyCircleBean>>> getMyCircleList();
 
     /**
      * 圈子列表
      */
     @Headers({"BaseUrl:zh"})
-    @POST("home/Goodcaipiao/circleType")
+    @POST("home/sports/circleType")
     Call<ZResponse<List<CircleBean>>> getCircleList();
 
     /**
@@ -245,7 +245,8 @@ public interface SportService {
      * type传"qx"取消收藏圈子
      */
     @Headers({"BaseUrl:zh"})
-    @POST("home/Goodcaipiao/addSq")
-    Call<ZResponse> addCircle(@Query("class_id") int class_id, @Query("type") int type);
+    @POST("home/sports/addSq")
+    Call<ZResponse> addCircle(@Query("class_id") int class_id, @Query("type") String type);
+
 
 }
