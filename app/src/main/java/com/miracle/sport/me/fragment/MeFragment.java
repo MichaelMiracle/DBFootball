@@ -153,7 +153,6 @@ public class MeFragment extends BaseFragment<F4Ddz2Binding> {
                 if (CommonUtils.getUser() == null) {
                     GOTO.LoginActivity(mContext);
                 } else {
-//                    GOTO.LotteryMyCollectionsActivity();
                     startActivity(new Intent(mContext, DDZMyCircleActivity.class));
                 }
                 break;
@@ -161,7 +160,6 @@ public class MeFragment extends BaseFragment<F4Ddz2Binding> {
                 if (CommonUtils.getUser() == null) {
                     GOTO.LoginActivity(mContext);
                 } else {
-//                    GOTO.LotteryMyCollectionsActivity();
                     startActivity(new Intent(mContext, DDZMyPostActivity.class));
                 }
                 break;
