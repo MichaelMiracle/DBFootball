@@ -23,8 +23,9 @@ public class FragClubeTypeChannelVP extends BaseFragment<FragClubetypeVpBinding>
     public void initView() {
         supportFm = getActivity().getSupportFragmentManager();
         binding.tablayout1.setupWithViewPager(binding.viewpager1);
-        binding.tablayout1.setTabMode(TabLayout.MODE_FIXED);
-        binding.tablayout1.setTabMode(TabLayout.MODE_SCROLLABLE);
+//        binding.tablayout1.setTabMode(TabLayout.MODE_FIXED);
+//        binding.tablayout1.setTabMode(TabLayout.MODE_SCROLLABLE);
+
         channelAdapter = new ClubeTypeChannelAdapter(supportFm);
         channelAdapter.setData(FragClubeTypeList.class,"赛程");
         channelAdapter.setData(FragClubePostSCAndHot.class,"热门");

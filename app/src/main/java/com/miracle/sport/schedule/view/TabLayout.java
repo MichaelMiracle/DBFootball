@@ -1942,6 +1942,8 @@ public class TabLayout extends HorizontalScrollView {
                             (1.0f - mSelectionOffset) * left);
                     right = (int) (mSelectionOffset * nextTitle.getRight() +
                             (1.0f - mSelectionOffset) * right);
+
+                    //TODO textView width
                 }
             } else {
                 left = right = -1;
@@ -1953,8 +1955,8 @@ public class TabLayout extends HorizontalScrollView {
         void setIndicatorPosition(int left, int right) {
             if (left != mIndicatorLeft || right != mIndicatorRight) {
                 // If the indicator's left/right has changed, invalidate
-                mIndicatorLeft = left;
-                mIndicatorRight = right;
+                mIndicatorLeft = left + (right - left) / 4;
+                mIndicatorRight = right - (right - left) / 4;
                 ViewCompat.postInvalidateOnAnimation(this);
             }
         }

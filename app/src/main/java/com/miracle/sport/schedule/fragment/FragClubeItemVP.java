@@ -38,8 +38,7 @@ public class FragClubeItemVP extends HandleFragment<FragClubeitmeVpBinding> {
     public void initView() {
         supportFm = getActivity().getSupportFragmentManager();
         binding.tablayout1.setupWithViewPager(binding.viewpager1);
-        binding.tablayout1.setTabMode(TabLayout.MODE_FIXED);
-        binding.tablayout1.setTabMode(TabLayout.MODE_SCROLLABLE);
+//        binding.tablayout1.setTabGravity(com.miracle.sport.schedule.view.TabLayout.GRAVITY_FILL);
 
         tabAdapter = new ClubeItemTabAdapter(supportFm);
         tabAdapter.setParentType(parentType);
