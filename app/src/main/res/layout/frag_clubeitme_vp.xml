@@ -13,21 +13,24 @@
             android:orientation="vertical">
 
             <RelativeLayout
+                android:background="#fff"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <android.support.design.widget.TabLayout
+                <com.miracle.sport.schedule.view.TabLayout
+                    android:layout_centerHorizontal="true"
                     android:id="@+id/tablayout1"
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="44dp"
                     android:background="#fff"
                     app:tabGravity="center"
                     app:tabMode="scrollable"
-                    app:tabIndicatorHeight="0px"
+                    app:tabPaddingStart="4dp"
+                    app:tabPaddingEnd="4dp"
 
-                    android:textSize="10sp"
-                    app:tabTextAppearance="@style/clube_post_head_bar_text"
-                    app:tabSelectedTextColor="@color/colorPrimary"
+                    style="@style/clube_post_head_tabbar_white"
+                    app:tabTextAppearance="@style/clube_post_head_bar_big_text_white"
+                    app:tabSelectedTextColor="@color/colorPrimaryDark"
                     app:tabIndicatorColor="@color/colorPrimaryDark"
                     />
             </RelativeLayout>

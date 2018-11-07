@@ -48,9 +48,7 @@
             android:visibility="visible" />
     </LinearLayout>
     <View
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:background="#666"
+        android:background="#ddd"
         android:layout_width="wrap_content"
         android:layout_height="1px"
         />

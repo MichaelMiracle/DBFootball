@@ -5,9 +5,16 @@
     android:background="#fff"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:padding="4dp"
-        android:layout_marginBottom="4dp"
+    <View
+        android:layout_height="1px"
+        android:layout_width="match_parent"
+        android:background="#ddd"
+        ></View>
+
+        <LinearLayout
+            android:paddingBottom="4dp"
+            android:paddingRight="4dp"
+            android:paddingLeft="4dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -17,12 +24,18 @@
             android:id="@+id/item_clube_tv1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="left"
+            android:layout_gravity="center_horizontal"
             android:ellipsize="end"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingBottom="4dp"
+            android:paddingTop="4dp"
             android:singleLine="true"
-            android:text="19:32"
-            android:textColor="#000"
-            android:textSize="11sp" />
+            android:background="@drawable/item_clube_sc_top"
+            android:text="2018-11-11 11:11"
+            android:textColor="#333"
+
+            android:textSize="15sp" />
 
         <LinearLayout
             android:layout_marginTop="13dp"
@@ -40,7 +53,7 @@
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:orientation="vertical"
+                    android:orientation="horizontal"
                     android:gravity="center_horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent">
@@ -73,7 +86,7 @@
 
                 <TextView
                     android:id="@+id/item_clube_tv3"
-                    android:layout_width="100dp"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:singleLine="true"
@@ -91,7 +104,7 @@
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:orientation="vertical"
+                    android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:gravity="center_horizontal"
                     android:layout_height="match_parent">
@@ -117,11 +130,4 @@
         </LinearLayout>
     </LinearLayout>
 
-    <View
-        android:layout_height="1px"
-        android:layout_width="match_parent"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:background="#666"
-        ></View>
 </LinearLayout>

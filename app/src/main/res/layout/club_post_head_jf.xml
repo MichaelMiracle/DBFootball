@@ -4,21 +4,54 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
+        android:background="#ddd"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         >
 
         <LinearLayout
-            style="@style/clube_post_head_bar"
-            android:paddingLeft="2dp"
-            android:paddingRight="2dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+
+                android:id="@+id/item_clube_tv1"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="排名"
+                android:gravity="start"
+                style="@style/clube_post_title_tv"
+                 />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="CBA常规赛"
+                android:textColor="#666"
+                android:textSize="14sp"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginLeft="2dp"
             android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center_vertical"
-            android:orientation="vertical">
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -27,49 +60,41 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="排名"
-                    style="@style/clube_post_title_tv"
-                    />
-
-                <TextView
                     android:id="@+id/item_clube_tv3"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    style="@style/clube_post_title_tv"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    
-                    android:text="场次" />
+                    android:text="场次"
+                    style="@style/club_post_head_jf_txt" />
 
                 <TextView
                     android:id="@+id/item_clube_tv4"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    style="@style/clube_post_title_tv"
                     android:layout_weight="1"
-                    
+                    android:singleLine="true"
+                    android:gravity="center"
+                    style="@style/club_post_head_jf_txt"
                     android:text="胜" />
 
                 <TextView
                     android:id="@+id/item_clube_tv5"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
                     android:layout_weight="1"
-                    style="@style/clube_post_title_tv"
+                    android:gravity="center"
+                    style="@style/club_post_head_jf_txt"
+                    android:singleLine="true"
                     android:text="平" />
 
                 <TextView
                     android:id="@+id/item_clube_tv6"
                     android:layout_width="0dp"
-                    android:gravity="center"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:layout_weight="1"
-                    style="@style/clube_post_title_tv"
+                    style="@style/club_post_head_jf_txt"
+                    android:singleLine="true"
                     android:text="负" />
 
                 <TextView
@@ -77,35 +102,39 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    style="@style/club_post_head_jf_txt"
                     android:layout_weight="1"
-                    style="@style/clube_post_title_tv"
+                    android:singleLine="true"
                     android:text="进球" />
 
                 <TextView
                     android:id="@+id/item_clube_tv8"
                     android:layout_width="0dp"
-                    android:gravity="center"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    style="@style/clube_post_title_tv"
+                    style="@style/club_post_head_jf_txt"
+                    android:gravity="center"
+                    android:singleLine="true"
                     android:text="失球" />
 
                 <TextView
                     android:id="@+id/item_clube_tv9"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
                     android:layout_weight="1"
-                    style="@style/clube_post_title_tv"
-                    android:text="净胜球" />
+                    style="@style/club_post_head_jf_txt"
+                    android:singleLine="true"
+                    android:gravity="center"
+                    android:text="凈球" />
 
                 <TextView
-                    android:gravity="center"
                     android:id="@+id/item_clube_tv10"
                     android:layout_width="0dp"
+                    style="@style/club_post_head_jf_txt"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    style="@style/clube_post_title_tv"
+                    android:gravity="center"
+                    android:singleLine="true"
                     android:text="积分" />
 
             </LinearLayout>

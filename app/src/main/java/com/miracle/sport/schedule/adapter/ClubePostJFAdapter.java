@@ -1,7 +1,9 @@
 package com.miracle.sport.schedule.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.miracle.R;
@@ -29,6 +31,25 @@ public class ClubePostJFAdapter extends RecyclerViewAdapter<ClubePostJF> {
 //        helper.setText(R.id.item_clube_tv3, "getLeague:"+item.getClub_name());
 //        helper.setText(R.id.item_clube_tv4, "getLeague:"+item.getLeague());
 //        helper.setText(R.id.item_clube_tv5, "getLeague:"+item.getLeague());
+
+        if(helper.getAdapterPosition() <= 3){
+            switch (helper.getAdapterPosition()){
+                case 1:
+                    ((TextView)helper.getView(R.id.item_clube_tv1)).setTextColor(Color.RED);
+                    break;
+                case 2:
+                case 3:
+                    ((TextView)helper.getView(R.id.item_clube_tv1)).setTextColor(Color.BLUE);
+                    break;
+                default:
+                    break;
+            }
+            helper.getView(R.id.item_clube_post_jf_ll).setBackgroundColor(Color.parseColor("#ddddff"));
+        }else{
+            ((TextView)helper.getView(R.id.item_clube_tv1)).setTextColor(Color.BLACK);
+            helper.getView(R.id.item_clube_post_jf_ll).setBackgroundColor(Color.WHITE);
+        }
+
 
         helper.setText(R.id.item_clube_tv1, ""+item.getRanking());
 //        item.getRanking();

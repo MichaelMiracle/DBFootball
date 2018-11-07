@@ -10,6 +10,7 @@ import com.miracle.sport.community.fragment.CommunityFragment;
 import com.miracle.sport.home.fragment.HomeFragment;
 import com.miracle.sport.me.fragment.MeFragment;
 import com.miracle.sport.onetwo.frag.FragmentLotteryMain;
+import com.miracle.sport.schedule.fragment.FragClubeTypeChannelVP;
 
 /**
  * Created by Michael on 2018/10/27 13:32 (星期六) <->w<->
@@ -25,7 +26,7 @@ public class SportMainActivity extends BaseActivity<ActivitySportMainBinding> {
         hideTitle();
         showContent();
         //HomeFragment   FragClubeTypeChannelVP
-        binding.zRadiogroup.setUp(getSupportFragmentManager(), R.id.container, new FragmentLotteryMain(), new HomeFragment(), new CommunityFragment(), new MeFragment());
+        binding.zRadiogroup.setUp(getSupportFragmentManager(), R.id.container, new FragClubeTypeChannelVP(), new HomeFragment(), new CommunityFragment(), new MeFragment());
     }
 
     @Override

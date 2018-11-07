@@ -38,7 +38,10 @@ public class ClubePostSCAdapter extends RecyclerViewAdapter<ClubePostSC> {
         GlideApp.with(mContext).load(item.getGuest_pic()).into((ImageView) helper.getView(R.id.item_clube_iv2));
         helper.setText(R.id.item_clube_tv4, item.getGuest());
 
-        helper.setText(R.id.item_clube_tv3, item.getRotation());
+        if(item.getRotation().isEmpty() || item.getRotation().length() < 2)
+            helper.setText(R.id.item_clube_tv3, "");
+        else
+            helper.setText(R.id.item_clube_tv3, item.getRotation());
 //        GlideApp.with(context).load(item.get);
 //        helper.setText(R.id.item_clube_time1, item.getAmount());
 //        helper.setText(R.id.tvIndex, item.getClub_name()+"XXXX");
