@@ -8,7 +8,7 @@
         android:background="@color/white"
         android:foreground="?android:attr/selectableItemBackground"
         android:gravity="center_vertical"
-        android:minHeight="40dp"
+        android:minHeight="45dp"
         android:orientation="horizontal"
         android:paddingLeft="10dp"
         android:paddingRight="10dp">

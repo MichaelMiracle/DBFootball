@@ -22,6 +22,7 @@ import com.miracle.base.network.RequestUtil;
 import com.miracle.base.network.ZCallback;
 import com.miracle.base.network.ZClient;
 import com.miracle.base.network.ZResponse;
+import com.miracle.base.util.CommonUtils;
 import com.miracle.base.util.ToastUtil;
 import com.miracle.databinding.FragmentHomeBinding;
 import com.miracle.sport.SportService;
@@ -34,6 +35,7 @@ import com.miracle.sport.home.bean.ChannerlKey;
 import com.miracle.sport.home.listener.OnChannelListener;
 import com.miracle.sport.home.util.PreUtils;
 import com.miracle.sport.home.util.UIUtils;
+import com.yanzhenjie.sofia.Sofia;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -56,6 +58,12 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding> implements O
     @Override
     public int getLayout() {
         return R.layout.fragment_home;
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        Sofia.with(getActivity()).statusBarBackground(CommonUtils.getColor(R.color.colorPrimaryDark)).statusBarLightFont();
     }
 
     @Override
@@ -273,6 +281,11 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding> implements O
             }
 
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
     }
 
     @Override

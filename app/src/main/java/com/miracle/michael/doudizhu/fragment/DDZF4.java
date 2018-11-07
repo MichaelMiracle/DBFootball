@@ -57,7 +57,7 @@ public class DDZF4 extends BaseFragment<F4Ddz2Binding> {
         binding.ibOrderManage.setOnClickListener(this);
         binding.ibmyCircle.setOnClickListener(this);
         binding.ibmyPost.setOnClickListener(this);
-        binding.ibScan.setOnClickListener(this);
+//        binding.ibScan.setOnClickListener(this);
         binding.ibBailManage.setOnClickListener(this);
         binding.ibSettings.setOnClickListener(this);
         binding.ibGroupChat.setOnClickListener(this);

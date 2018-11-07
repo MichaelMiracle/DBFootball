@@ -6,8 +6,7 @@
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/swipeLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#fff">
+        android:layout_height="match_parent">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -31,8 +30,9 @@
                     android:id="@+id/llMe"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@mipmap/me_backgroud"
-                    android:padding="6dp">
+                    android:padding="6dp"
+                    android:background="@color/white"
+                    >
 
 
                     <RelativeLayout
@@ -42,17 +42,32 @@
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_alignParentRight="true">
+                            android:layout_alignParentLeft="true">
 
                             <TextView
-                                android:id="@+id/bianji_btn"
+                                android:id="@+id/ibShare"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:drawableLeft="@mipmap/bianji_iocn"
                                 android:drawablePadding="6dp"
                                 android:padding="10dp"
-                                android:text="编辑"
-                                android:textColor="@color/white" />
+                                android:text="分享" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true">
+
+                            <TextView
+                                android:id="@+id/ibSettings"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:drawableLeft="@mipmap/bianji_set"
+                                android:drawablePadding="6dp"
+                                android:padding="10dp"
+                                android:text="编辑" />
 
                         </LinearLayout>
 
@@ -104,7 +119,6 @@
                                         android:paddingLeft="16dp"
                                         android:paddingRight="16dp"
                                         android:text="请登录"
-                                        android:textColor="@color/white"
                                         android:textSize="16sp" />
                                 </LinearLayout>
 
@@ -120,9 +134,11 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:orientation="horizontal">
+                    android:layout_height="60dp"
+                    android:layout_marginTop="1dp"
+                    android:orientation="horizontal"
+                    android:background="@color/white"
+                    >
 
                     <LinearLayout
                         android:id="@+id/ibmyPost"
@@ -135,16 +151,26 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@mipmap/jiemian001_07" />
+                            android:src="@mipmap/jiemian001_07"
+                            android:visibility="gone"
+                            />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="6dp"
                             android:text="我的发帖"
-                            android:textSize="12sp" />
+                            android:textSize="18sp" />
 
                     </LinearLayout>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="#f5f5f5"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginBottom="6dp"
+                        />
 
                     <LinearLayout
                         android:id="@+id/ibmyCircle"
@@ -157,16 +183,26 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@mipmap/jiemian001_05" />
+                            android:src="@mipmap/jiemian001_05"
+                            android:visibility="gone"
+                            />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="6dp"
                             android:text="我的圈子"
-                            android:textSize="12sp" />
+                            android:textSize="18sp" />
 
                     </LinearLayout>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="#f5f5f5"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginBottom="6dp"
+                        />
 
 
                     <LinearLayout
@@ -180,14 +216,16 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@mipmap/jiemian001_03" />
+                            android:src="@mipmap/jiemian001_03"
+                            android:visibility="gone"
+                            />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="6dp"
                             android:text="我的收藏"
-                            android:textSize="12sp" />
+                            android:textSize="18sp" />
 
                     </LinearLayout>
 
@@ -203,12 +241,13 @@
 
 
                     <LinearLayout
-                        android:id="@+id/ibShare"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        >
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -225,106 +264,43 @@
 
                 </LinearLayout>
 
-                <LinearLayout
+                <com.miracle.base.view.ItemBar
+                    android:id="@+id/ibCustomerService"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:orientation="horizontal">
+                    android:layout_height="45dp"
+                    app:ItemBar_TextSize="14sp"
+                    android:layout_marginTop="6dp"
+                    app:ItemBar_Left_TextColor="@color/dark_yellow"
+                    app:ItemBar_Left_Icon="@string/icon_customer_service"
+                    app:ItemBar_Text="客服" />
 
-                    <LinearLayout
-                        android:id="@+id/ibSettings"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical">
+                <com.miracle.base.view.ItemBar
+                    android:id="@+id/ibAboutUs"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    app:ItemBar_TextSize="14sp"
+                    android:layout_marginTop="1dp"
+                    app:ItemBar_Left_TextColor="@color/dark_yellow"
+                    app:ItemBar_Left_Icon="@string/icon_customer_service"
+                    app:ItemBar_Text="关于我们" />
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@mipmap/jiemian001_17" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="6dp"
-                            android:text="@string/text_settings"
-                            android:textSize="12sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/ibCustomerService"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@mipmap/jiemian001_15" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="6dp"
-                            android:text="客服"
-                            android:textSize="12sp" />
-                    </LinearLayout>
-
-
-                    <LinearLayout
-                        android:id="@+id/ibAboutUs"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@mipmap/jiemian001_18" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="6dp"
-                            android:text="@string/text_about_us"
-                            android:textSize="12sp" />
-                    </LinearLayout>
-
-
-                    <LinearLayout
-                        android:id="@+id/ibScan"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:visibility="invisible">
-
-                        <com.miracle.base.view.IconFontTextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/icon_scan"
-                            android:textSize="40sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="扫一扫"
-                            android:textSize="12sp" />
-                    </LinearLayout>
-
-                </LinearLayout>
+                <com.miracle.base.view.ItemBar
+                    android:id="@+id/appUpdate"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    app:ItemBar_TextSize="14sp"
+                    android:layout_marginTop="1dp"
+                    app:ItemBar_Left_TextColor="@color/dark_yellow"
+                    app:ItemBar_Left_Icon="@string/icon_customer_service"
+                    app:ItemBar_Text="更新版本" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="54dp"
                     android:layout_marginTop="20dp"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:visibility="gone"
+                    >
 
                     <LinearLayout
                         android:layout_width="0dp"

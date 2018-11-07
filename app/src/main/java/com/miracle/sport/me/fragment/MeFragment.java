@@ -29,6 +29,7 @@ import com.miracle.sport.me.activity.MyCollectionsActivity;
 import com.tbruyelle.rxpermissions2.Permission;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 import com.wx.goodview.GoodView;
+import com.yanzhenjie.sofia.Sofia;
 
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
@@ -98,13 +99,13 @@ public class MeFragment extends BaseFragment<F4Ddz2Binding> {
         binding.ibOrderManage.setOnClickListener(this);
         binding.ibmyCircle.setOnClickListener(this);
         binding.ibmyPost.setOnClickListener(this);
-        binding.ibScan.setOnClickListener(this);
         binding.ibBailManage.setOnClickListener(this);
         binding.ibSettings.setOnClickListener(this);
         binding.ibGroupChat.setOnClickListener(this);
         binding.ibCustomerService.setOnClickListener(this);
         binding.ibShare.setOnClickListener(this);
         binding.ibAboutUs.setOnClickListener(this);
+        binding.appUpdate.setOnClickListener(this);
         binding.swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -198,12 +199,15 @@ public class MeFragment extends BaseFragment<F4Ddz2Binding> {
                 GOTO.AboutUsActivity(mContext);
                 break;
 
-            case R.id.ibScan:
-                if (isGranted) {
-                    startActivityForResult(new Intent(mContext, CaptureActivity.class), Constant.REQUSET_CODE_SCAN);
-                } else {
-                    requestCameraPermission();
-                }
+//            case R.id.ibScan:
+//                if (isGranted) {
+//                    startActivityForResult(new Intent(mContext, CaptureActivity.class), Constant.REQUSET_CODE_SCAN);
+//                } else {
+//                    requestCameraPermission();
+//                }
+//                break;
+            case R.id.appUpdate:
+                ToastUtil.toast("已是最新版本");
                 break;
 
         }
