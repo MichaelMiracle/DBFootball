@@ -42,7 +42,7 @@ public class ChannelHomeFragment extends BaseFragment<FragmentCategoryHomeBindin
 
 
     private HomeListAdapter mAdapter;
-    private ZPageLoadCallback callBack;
+    private ZPageLoadDataCallback callBack;
 
     private int reqKey = 1;
     /**页面是否是首次加载*/
@@ -118,14 +118,14 @@ public class ChannelHomeFragment extends BaseFragment<FragmentCategoryHomeBindin
 //                ZClient.getService(SportService.class).getNewsList(reqKey, page, limit).enqueue(callBack);
 //            }
 //        };
-        callBack=new ZPageLoadCallback<ZResponse<List<Football>>>(mAdapter,binding.recyclerView) {
+        callBack=new ZPageLoadDataCallback<ZResponse<HomeBean>>(mAdapter,binding.recyclerView) {
             @Override
             public void requestAction(int page, int pageSize) {
-                RequestUtil.cacheUpdate(ZClient.getService(SportService.class).getNewsList(reqKey, page, pageSize),callBack);
+                RequestUtil.cacheUpdate(ZClient.getService(SportService.class).getNewsSpotrList(reqKey, page, pageSize),callBack);
             }
 
             @Override
-            protected void onSuccess(ZResponse<List<Football>> data) {
+            protected void onSuccess(ZResponse<HomeBean> data) {
                 super.onSuccess(data);
                 isFirst = false;
             }

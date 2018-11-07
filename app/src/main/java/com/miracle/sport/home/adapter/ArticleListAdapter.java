@@ -65,7 +65,7 @@ public class ArticleListAdapter extends RecyclerViewAdapter<ArticleCommentBean> 
 
 
         helper.setText(R.id.tvAuthor,item.getContent());
-        helper.setText(R.id.im_click_num,item.getComment_click_num()+"");
+        helper.setText(R.id.im_click_num,item.getClick_num()+"");
         helper.setText(R.id.im_comment_num,item.getChild_count()+"");
         if(1 == item.getClick()){
             Drawable img = mContext.getResources().getDrawable(R.mipmap.good_checked);

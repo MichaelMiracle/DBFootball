@@ -111,7 +111,7 @@ public class SimpleWebCommentActivity extends BaseActivity<ActivityHomeWebCommen
     }
 
     private void reqDetail() {
-        ZClient.getService(SportService.class).getCommentDetail(id).enqueue(new ZCallback<ZResponse<ArticleDetailBean>>(this) {
+        ZClient.getService(SportService.class).getCommentDetailSport(id).enqueue(new ZCallback<ZResponse<ArticleDetailBean>>(this) {
             @Override
             public void onSuccess(ZResponse<ArticleDetailBean> data) {
                 setRight(data.getData().getCoin() == 1 ? fullHear : emptyHear, Color.WHITE, 22);
@@ -166,11 +166,11 @@ public class SimpleWebCommentActivity extends BaseActivity<ActivityHomeWebCommen
      * 对评论点赞
      */
     private void reqClick(final int position) {
-        ZClient.getService(SportService.class).setClickClass(mAdapter.getItem(position).getComment_id(), 1, "0").enqueue(new ZCallback<ZResponse<String>>() {
+        ZClient.getService(SportService.class).setClickClass(mAdapter.getItem(position).getComment_id(), 1, "pl").enqueue(new ZCallback<ZResponse<String>>() {
             @Override
             public void onSuccess(ZResponse<String> data) {
                 int clickNum = mAdapter.getItem(position).getComment_click_num();
-                mAdapter.getItem(position).setComment_click_num(clickNum + 1);
+                mAdapter.getItem(position).setClick_num(clickNum + 1);
                 mAdapter.getItem(position).setClick(1);
                 mAdapter.notifyDataSetChanged();
             }
@@ -181,7 +181,7 @@ public class SimpleWebCommentActivity extends BaseActivity<ActivityHomeWebCommen
      * 对文章点赞
      */
     private void reqClassClick() {
-        ZClient.getService(SportService.class).setClickClass(id, 1, "1").enqueue(new ZCallback<ZResponse<String>>() {
+        ZClient.getService(SportService.class).setClickClass(id, 1, "").enqueue(new ZCallback<ZResponse<String>>() {
             @Override
             public void onSuccess(ZResponse<String> data) {
                 goodView.setImage(getResources().getDrawable(R.mipmap.good_checked_big));
@@ -197,7 +197,7 @@ public class SimpleWebCommentActivity extends BaseActivity<ActivityHomeWebCommen
      * 删除评论
      */
     private void reqClickDelete(final int position) {
-        ZClient.getService(SportService.class).setClickDelete(id, mAdapter.getItem(position).getComment_id(), "1").enqueue(new ZCallback<ZResponse<String>>(this) {
+        ZClient.getService(SportService.class).setClickDelete(id, mAdapter.getItem(position).getComment_id(), "1").enqueue(new ZCallback<ZResponse<String>>() {
             @Override
             public void onSuccess(ZResponse<String> data) {
                 mAdapter.remove(position);
@@ -381,9 +381,9 @@ public class SimpleWebCommentActivity extends BaseActivity<ActivityHomeWebCommen
 //                        }
 //                    });
                     final EditText editText = binding.includeSendComment.etCommentContent;
-                    ZClient.getService(SportService.class).sendCommentCommet(sendId, editText.getText().toString(), toUser, type).enqueue(new ZCallback<ZResponse<ArticleCommentBean>>(this) {
+                    ZClient.getService(SportService.class).sendCommentCommet(sendId, editText.getText().toString(), toUser, type).enqueue(new ZCallback<ZResponse<String>>(this) {
                         @Override
-                        public void onSuccess(ZResponse<ArticleCommentBean> data) {
+                        public void onSuccess(ZResponse<String> data) {
                             ToastUtil.toast("评论成功");
                             commentId = 0;
                             toUser = "";

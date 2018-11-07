@@ -11,12 +11,14 @@ import com.miracle.base.Constant;
 import com.miracle.base.network.RequestUtil;
 import com.miracle.base.network.ZClient;
 import com.miracle.base.network.ZPageLoadCallback;
+import com.miracle.base.network.ZPageLoadDataCallback;
 import com.miracle.base.network.ZResponse;
 import com.miracle.databinding.FragmentCategoryHomeBinding;
 import com.miracle.sport.SportService;
 import com.miracle.sport.home.activity.SimpleWebCommentActivity;
 import com.miracle.sport.home.adapter.HomeListAdapter;
 import com.miracle.sport.home.bean.Football;
+import com.miracle.sport.home.bean.HomeBean;
 
 import java.util.List;
 
@@ -28,7 +30,7 @@ public class ChannelHomeFristFragment extends BaseFragment<FragmentCategoryHomeB
 
 
     private HomeListAdapter mAdapter;
-    private ZPageLoadCallback callBack;
+    private ZPageLoadDataCallback callBack;
 
     private int reqKey = 1;
     /**页面是否是首次加载*/
@@ -105,17 +107,18 @@ public class ChannelHomeFristFragment extends BaseFragment<FragmentCategoryHomeB
 //                ZClient.getService(SportService.class).getNewsList(reqKey, page, limit).enqueue(callBack);
 //            }
 //        };
-        callBack=new ZPageLoadCallback<ZResponse<List<Football>>>(mAdapter,binding.recyclerView) {
+        callBack=new ZPageLoadDataCallback<ZResponse<HomeBean>>(mAdapter,binding.recyclerView) {
             @Override
             public void requestAction(int page, int pageSize) {
-                RequestUtil.cacheUpdate(ZClient.getService(SportService.class).getNewsList(reqKey, page, pageSize),callBack);
+                RequestUtil.cacheUpdate(ZClient.getService(SportService.class).getNewsSpotrList(reqKey, page, pageSize),callBack);
             }
 
             @Override
-            protected void onSuccess(ZResponse<List<Football>> data) {
+            protected void onSuccess(ZResponse<HomeBean> data) {
                 super.onSuccess(data);
                 isFirst = false;
             }
+
         };
 //        callBack = new ZPageLoadCallback<ZResponse<HomeBean>>(mAdapter, binding.recyclerView) {
 //            @Override

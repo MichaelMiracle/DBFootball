@@ -10,6 +10,7 @@ import com.miracle.sport.community.bean.PostBean;
 import com.miracle.sport.community.bean.PostDetailBean;
 import com.miracle.sport.home.bean.ChannerlKey;
 import com.miracle.sport.home.bean.Football;
+import com.miracle.sport.home.bean.HomeBean;
 import com.miracle.sport.home.bean.HomeCommentBean;
 
 import java.util.List;
@@ -91,11 +92,18 @@ public interface SportService {
     Call<ZResponse> dislike(@Query("createid") int createid, @Query("coin") int coin);
 
 
+//    /**
+//     * 首页title 类型
+//     */
+//    @Headers({"BaseUrl:zh"})
+//    @POST("home/Goodcaipiao/type")
+//    Call<ZResponse<List<ChannerlKey>>> getSearchKeys();
+
     /**
      * 首页title 类型
      */
     @Headers({"BaseUrl:zh"})
-    @POST("home/Goodcaipiao/type")
+    @POST("home/sport/type")
     Call<ZResponse<List<ChannerlKey>>> getSearchKeys();
 
     /**
@@ -105,6 +113,15 @@ public interface SportService {
     @POST("home/Goodcaipiao/flashList")
     Call<ZResponse<List<Football>>> getNewsList(@Query("class_id") int class_id, @Query("page") int page, @Query("pageSize") int pageSize);
     //    Call<ZResponse<List<Football>>> getNewsList(@Query("class_id") int class_id, @Query("page") int page, @Query("pageSize") int pageSize);
+
+    /**
+     * 首页列表
+     */
+    @Headers({"BaseUrl:zh"})
+    @POST("home/sport/sportlist")
+    Call<ZResponse<HomeBean>> getNewsSpotrList(@Query("class_id") int class_id, @Query("page") int page, @Query("pageSize") int pageSize);
+    //    Call<ZResponse<List<Football>>> getNewsList(@Query("class_id") int class_id, @Query("page") int page, @Query("pageSize") int pageSize);
+
 
     /**
      * 列表详情
@@ -121,13 +138,20 @@ public interface SportService {
     Call<ZResponse<ArticleDetailBean>> getCommentDetail(@Query("id") int id);
 
     /**
+     * 列表详情
+     */
+    @Headers({"BaseUrl:zh"})
+    @POST("home/comment/detail")
+    Call<ZResponse<ArticleDetailBean>> getCommentDetailSport(@Query("id") int id);
+
+    /**
      * 评论点赞
      *
      * @POST("home/sport/click")
      */
     @Headers({"BaseUrl:zh"})
-    @POST("home/Goodcaipiao/click")
-    Call<ZResponse<String>> setClickClass(@Query("create_id") int createid, @Query("click") int click, @Query("type") String type);
+    @POST("home/comment/click")
+    Call<ZResponse<String>> setClickClass(@Query("createid") int createid, @Query("click") int click, @Query("type") String type);
 
     /**
      * 删除评论
@@ -141,14 +165,14 @@ public interface SportService {
      * 收藏接口
      */
     @Headers({"BaseUrl:zh"})
-    @POST("home/Goodcaipiao/collect")
-    Call<ZResponse<String>> likeOrDislike(@Query("create_id") int createid, @Query("type") String type);
+    @POST("home/sport/collect")
+    Call<ZResponse<String>> likeOrDislike(@Query("createid") int createid, @Query("type") String type);
 
     /**
      * 我的收藏接口
      */
     @Headers({"BaseUrl:zh"})
-    @POST("home/Goodcaipiao/myCollect")
+    @POST("home/sport/myCollect")
     Call<ZResponse<List<Football>>> getMycollections(@Query("page") int page, @Query("pageSize") int pageSize);
 
     /**
@@ -165,12 +189,20 @@ public interface SportService {
     @POST("home/Goodcaipiao/commentList")
     Call<ZResponse<List<ArticleCommentBean>>> getCommetList(@Query("id") int id, @Query("page") int page, @Query("pageSize") int pageSize);
 
+//    /**
+//     * 发评论
+//     */
+//    @Headers({"BaseUrl:zh"})
+//    @POST("home/comment/sendComment")
+//    Call<ZResponse<ArticleCommentBean>> sendCommentCommet(@Query("create_id") int id, @Query("content") String content, @Query("to_user_id") String to_user_id, @Query("type") String type);
+
     /**
      * 发评论
      */
     @Headers({"BaseUrl:zh"})
-    @POST("home/Goodcaipiao/sendComment")
-    Call<ZResponse<ArticleCommentBean>> sendCommentCommet(@Query("create_id") int id, @Query("content") String content, @Query("to_user_id") String to_user_id, @Query("type") String type);
+    @POST("home/comment/sendComment")
+    Call<ZResponse<String>> sendCommentCommet(@Query("id") int id, @Query("content") String content,@Query("to_user_id") String to_user_id,@Query("type") String type);
+
 
     /**
      * 获取评论列表

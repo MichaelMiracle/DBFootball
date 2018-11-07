@@ -281,9 +281,9 @@ public class CommentListActivity extends BaseActivity<SwipeRecyclerCommentBindin
 //                        }
 //                    });
                     final EditText editText = binding.etCommentContent;
-                    ZClient.getService(SportService.class).sendCommentCommet(sendId,editText.getText().toString(),toUser,type).enqueue(new ZCallback<ZResponse<ArticleCommentBean>>() {
+                    ZClient.getService(SportService.class).sendCommentCommet(sendId,editText.getText().toString(),toUser,type).enqueue(new ZCallback<ZResponse<String>>() {
                         @Override
-                        public void onSuccess(ZResponse<ArticleCommentBean> data) {
+                        public void onSuccess(ZResponse<String> data) {
                             ToastUtil.toast("评论成功");
                             binding.tvCommentCount.setText(mAdapter.getItemCount()+"");
                             commentId = 0;
