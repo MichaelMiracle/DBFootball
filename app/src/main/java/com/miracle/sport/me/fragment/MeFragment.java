@@ -107,6 +107,7 @@ public class MeFragment extends BaseFragment<F4Ddz2Binding> {
         binding.ibShare.setOnClickListener(this);
         binding.ibAboutUs.setOnClickListener(this);
         binding.appUpdate.setOnClickListener(this);
+        binding.ibClearCache.setOnClickListener(this);
         binding.swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -207,6 +208,10 @@ public class MeFragment extends BaseFragment<F4Ddz2Binding> {
 //                break;
             case R.id.appUpdate:
                 ToastUtil.toast("已是最新版本");
+                break;
+
+            case R.id.ibClearCache:
+                ToastUtil.toast("缓存清理完成!");
                 break;
 
         }

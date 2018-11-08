@@ -288,7 +288,9 @@ public class SimpleWebCommentActivity extends BaseActivity<ActivityHomeWebCommen
                         break;
                     case R.id.im_delete:
                         deletePosition = position;
-                        commonDialog.show();
+                        if(null != commonDialog){
+                            commonDialog.show();
+                        }
 //                        reqClickDelete(position);
                         break;
                 }
@@ -412,6 +414,15 @@ public class SimpleWebCommentActivity extends BaseActivity<ActivityHomeWebCommen
                 break;
         }
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(null != commonDialog){
+            commonDialog.cancel();
+            commonDialog =null;
+        }
     }
 
 }

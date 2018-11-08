@@ -305,9 +305,9 @@ public class CommentListActivity extends BaseActivity<SwipeRecyclerCommentBindin
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if(null != loadingDialog){
-            loadingDialog.cancel();
-            loadingDialog =null;
+        if(null != commonDialog){
+            commonDialog.cancel();
+            commonDialog =null;
         }
     }
 }

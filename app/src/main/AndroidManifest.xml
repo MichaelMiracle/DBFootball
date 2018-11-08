@@ -583,14 +583,14 @@
         <!--android:name="EASEMOB_APPKEY"-->
         <!--android:value="easemob-demo#chatdemoui" />-->
         <!-- 声明sdk所需的service -->
-        <service
-            android:name="com.hyphenate.chat.EMChatService"
-            android:exported="true"
-            tools:ignore="ExportedService" />
-        <service
-            android:name="com.hyphenate.chat.EMJobService"
-            android:exported="true"
-            android:permission="android.permission.BIND_JOB_SERVICE" />
+        <!--<service-->
+            <!--android:name="com.hyphenate.chat.EMChatService"-->
+            <!--android:exported="true"-->
+            <!--tools:ignore="ExportedService" />-->
+        <!--<service-->
+            <!--android:name="com.hyphenate.chat.EMJobService"-->
+            <!--android:exported="true"-->
+            <!--android:permission="android.permission.BIND_JOB_SERVICE" />-->
 
         <!-- 声明sdk所需的receiver -->
         <receiver android:name="com.hyphenate.chat.EMMonitorReceiver">
