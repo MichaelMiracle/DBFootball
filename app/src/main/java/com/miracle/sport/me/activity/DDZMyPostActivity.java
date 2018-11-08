@@ -7,6 +7,7 @@ import android.view.View;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.miracle.R;
 import com.miracle.base.BaseActivity;
+import com.miracle.base.Constant;
 import com.miracle.base.network.PageLoadCallback;
 import com.miracle.base.network.ZClient;
 import com.miracle.databinding.SwipeRecyclerBinding;
@@ -56,7 +57,7 @@ public class DDZMyPostActivity extends BaseActivity<SwipeRecyclerBinding> {
         mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                startActivity(new Intent(mContext, PostDetailActivity.class).putExtra("id", mAdapter.getItem(position).getId()));
+                startActivity(new Intent(mContext, PostDetailActivity.class).putExtra(Constant.POST_ID, mAdapter.getItem(position).getId()));
             }
         });
     }

@@ -318,6 +318,7 @@
                     app:ItemBar_Text="更新版本" />
 
                 <com.miracle.base.view.ItemBar
+                    android:id="@+id/ibClearCache"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     app:ItemBar_TextSize="16sp"

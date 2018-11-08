@@ -1,7 +1,10 @@
 package com.miracle.sport.me.fragment;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
@@ -20,7 +23,6 @@ import com.miracle.base.network.ZResponse;
 import com.miracle.base.network.ZService;
 import com.miracle.base.util.CommonUtils;
 import com.miracle.base.util.ToastUtil;
-import com.miracle.base.zxing.activity.CaptureActivity;
 import com.miracle.databinding.F4Ddz2Binding;
 import com.miracle.sport.me.activity.DDZMyCircleActivity;
 import com.miracle.sport.me.activity.DDZMyPostActivity;
@@ -29,7 +31,8 @@ import com.miracle.sport.me.activity.MyCollectionsActivity;
 import com.tbruyelle.rxpermissions2.Permission;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 import com.wx.goodview.GoodView;
-import com.yanzhenjie.sofia.Sofia;
+
+import java.lang.ref.WeakReference;
 
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
@@ -37,11 +40,14 @@ import io.reactivex.functions.Consumer;
 import static android.app.Activity.RESULT_OK;
 
 public class MeFragment extends BaseFragment<F4Ddz2Binding> {
+    private SHandler handler;
+
     private UserInfoBean userInfo;
     private GoodView goodView;
     private RxPermissions rxPermission;
     private Disposable subscribe;
     private boolean isGranted;
+    private ProgressDialog dialogProgress;
 
     @Override
     public int getLayout() {
@@ -52,6 +58,8 @@ public class MeFragment extends BaseFragment<F4Ddz2Binding> {
     public void initView() {
         binding.titleBar.showLeft(drawerLayout != null);
         goodView = new GoodView(mContext);
+        dialogProgress = new ProgressDialog(mContext);
+        handler = new SHandler(this);
 
         rxPermission = new RxPermissions(getActivity());
     }
@@ -87,7 +95,7 @@ public class MeFragment extends BaseFragment<F4Ddz2Binding> {
                 @Override
                 public void onSuccess(ZResponse<UserInfoBean> data) {
                     userInfo = data.getData();
-                    binding.tvName.setText(userInfo.getNickname()+"\n"+userInfo.getUsername());
+                    binding.tvName.setText(userInfo.getNickname() + "\n" + userInfo.getUsername());
                     GlideApp.with(mContext).load(userInfo.getImg()).placeholder(R.mipmap.default_head).into(binding.ivHeadImg);
                 }
             });
@@ -112,6 +120,8 @@ public class MeFragment extends BaseFragment<F4Ddz2Binding> {
                 reqData();
             }
         });
+        binding.appUpdate.setOnClickListener(this);
+        binding.ibClearCache.setOnClickListener(this);
 
         binding.titleBar.setLeftClickListener(new View.OnClickListener() {
             @Override
@@ -204,8 +214,15 @@ public class MeFragment extends BaseFragment<F4Ddz2Binding> {
 //                    requestCameraPermission();
 //                }
 //                break;
+            case R.id.ibClearCache:
+                dialogProgress.setMessage("清理中...");
+                dialogProgress.show();
+                handler.sendEmptyMessageDelayed(0, 1000);
+                break;
             case R.id.appUpdate:
-                ToastUtil.toast("已是最新版本");
+                dialogProgress.setMessage("检查中...");
+                dialogProgress.show();
+                handler.sendEmptyMessageDelayed(1, 1000);
                 break;
 
         }
@@ -225,5 +242,19 @@ public class MeFragment extends BaseFragment<F4Ddz2Binding> {
     public MeFragment setDrawer(DrawerLayout drawerLayout) {
         this.drawerLayout = drawerLayout;
         return this;
+    }
+
+    private static final class SHandler extends Handler {
+        private WeakReference<MeFragment> weakReference;
+
+        public SHandler(MeFragment meFragment) {
+            weakReference = new WeakReference<>(meFragment);
+        }
+
+        @Override
+        public void handleMessage(Message msg) {
+            weakReference.get().dialogProgress.dismiss();
+            ToastUtil.toast(msg.what == 0 ? "缓存清理完成!" : "当前已是最新版本");
+        }
     }
 }

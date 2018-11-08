@@ -70,8 +70,8 @@ public interface SportService {
      * type 评论帖子 = 1 /评论评论 = 0
      */
     @Headers({"BaseUrl:zh"})
-    @POST("home/Goodcaipiao/sendTieziComment")
-    Call<ZResponse> sendPostComment(@Query("id") int id, @Query("to_user_id") int to_user_id, @Query("type") int type, @Query("content") String content);
+    @POST("home/sports/tieziComment")
+    Call<ZResponse> sendPostComment(@Query("createid") int createid, @Query("to_user_id") int to_user_id, @Query("type") int type, @Query("content") String content);
 
 
     /**
@@ -80,16 +80,10 @@ public interface SportService {
      * @param type 1帖子，0评论
      */
     @Headers({"BaseUrl:zh"})
-    @POST("home/Goodcaipiao/clickTiezi")
-    Call<ZResponse> likePost(@Query("create_id") int create_id, @Query("click") int click, @Query("type") int type);
+    @POST("home/sports/tieziClick")
+    Call<ZResponse> likePost(@Query("createid") int create_id, @Query("click") int click, @Query("type") int type);
 
 
-    /**
-     * 取消点赞
-     */
-    @Headers({"BaseUrl:zh"})
-    @POST("home/Goodcaipiao/cancelClick")
-    Call<ZResponse> dislike(@Query("createid") int createid, @Query("coin") int coin);
 
 
 //    /**
