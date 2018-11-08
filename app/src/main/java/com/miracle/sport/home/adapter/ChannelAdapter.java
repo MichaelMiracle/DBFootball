@@ -3,6 +3,7 @@ package com.miracle.sport.home.adapter;
 import android.graphics.Bitmap;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,9 +12,11 @@ import android.view.animation.TranslateAnimation;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.miracle.R;
+import com.miracle.base.network.GlideApp;
 import com.miracle.sport.home.bean.Channel;
 import com.miracle.sport.home.listener.OnChannelDragListener;
 
@@ -83,8 +86,7 @@ public class ChannelAdapter extends BaseMultiItemQuickAdapter<Channel,BaseViewHo
                 break;
             case Channel.TYPE_MY_CHANNEL:
                 //我的频道列表
-                helper
-                        .setVisible(R.id.ivDelete, mIsEdit && !(channel.name.equals("推荐")))//编辑模式就显示删除按钮
+                helper.setVisible(R.id.ivDelete, mIsEdit && !(channel.name.equals("推荐")))//编辑模式就显示删除按钮
                         .setOnLongClickListener(R.id.rlItemView, new View.OnLongClickListener() {
                             @Override
                             public boolean onLongClick(View v) {
@@ -162,6 +164,14 @@ public class ChannelAdapter extends BaseMultiItemQuickAdapter<Channel,BaseViewHo
 
 
                 });
+//                helper.setImageResource(R.id.ivChannel,channel.pic)
+                if(TextUtils.isEmpty(channel.pic)){
+                    helper.getView(R.id.ivChannel).setVisibility(View.GONE);
+                }else{
+                    helper.getView(R.id.ivChannel).setVisibility(View.VISIBLE);
+                    GlideApp.with(mContext).load(channel.pic).placeholder(R.mipmap.defaule_img).into((ImageView) helper.getView(R.id.ivChannel));
+                }
+
                 break;
             case Channel.TYPE_OTHER_CHANNEL:
                 //频道推荐列表
@@ -209,6 +219,12 @@ public class ChannelAdapter extends BaseMultiItemQuickAdapter<Channel,BaseViewHo
 
                             }
                         });
+                if(TextUtils.isEmpty(channel.pic)){
+                    helper.getView(R.id.ivChannel).setVisibility(View.GONE);
+                }else{
+                    helper.getView(R.id.ivChannel).setVisibility(View.VISIBLE);
+                    GlideApp.with(mContext).load(channel.pic).placeholder(R.mipmap.defaule_img).into((ImageView) helper.getView(R.id.ivChannel));
+                }
                 break;
         }
     }

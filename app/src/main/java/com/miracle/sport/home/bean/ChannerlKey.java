@@ -11,6 +11,7 @@ public class ChannerlKey implements Serializable {
      */
     private String id;
     private String name;
+    private String pic;
     private int class_id;
 
     public String getId() {
@@ -35,5 +36,13 @@ public class ChannerlKey implements Serializable {
 
     public void setClass_id(int class_id) {
         this.class_id = class_id;
+    }
+
+    public String getPic() {
+        return pic;
+    }
+
+    public void setPic(String pic) {
+        this.pic = pic;
     }
 }

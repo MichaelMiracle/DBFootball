@@ -233,7 +233,8 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding> implements O
             for (int i = 0; i < mNetChannels.size(); i++) {
                 String title = mNetChannels.get(i).getName();
                 String code = mNetChannels.get(i).getId()+"";
-                mSelectedChannels.add(new Channel(title, code));
+                String pic = mNetChannels.get(i).getPic();
+                mSelectedChannels.add(new Channel(title, code,pic));
             }
 
             selectedChannelJson = mGson.toJson(mSelectedChannels);//将集合转换成json字符串

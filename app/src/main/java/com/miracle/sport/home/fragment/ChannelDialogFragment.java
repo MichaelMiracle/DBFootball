@@ -99,7 +99,7 @@ public class ChannelDialogFragment extends DialogFragment implements OnChannelDr
 
 
     private void processLogic() {
-        mDatas.add(new Channel(Channel.TYPE_MY, "我的频道", ""));
+        mDatas.add(new Channel(Channel.TYPE_MY, "我的频道", "",""));
         Bundle bundle = getArguments();
         List<Channel> selectedDatas = (List<Channel>) bundle.getSerializable(Constant.DATA_SELECTED);
         List<Channel> unselectedDatas = (List<Channel>) bundle.getSerializable(Constant.DATA_UNSELECTED);
@@ -107,7 +107,7 @@ public class ChannelDialogFragment extends DialogFragment implements OnChannelDr
         setDataType(unselectedDatas, Channel.TYPE_OTHER_CHANNEL);
 
         mDatas.addAll(selectedDatas);
-        mDatas.add(new Channel(Channel.TYPE_OTHER, "频道推荐", ""));
+        mDatas.add(new Channel(Channel.TYPE_OTHER, "频道推荐", "",""));
         mDatas.addAll(unselectedDatas);
 
 

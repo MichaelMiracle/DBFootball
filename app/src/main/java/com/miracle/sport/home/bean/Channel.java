@@ -14,16 +14,28 @@ public class Channel implements MultiItemEntity, Serializable {
     public String id;
     public int itemType;
     public String class_id;
+    public String pic;
 
-    public Channel(String title, String channelCode) {
-        this(TYPE_MY_CHANNEL, title, channelCode);
+//    public Channel(String title, String channelCode) {
+//        this(TYPE_MY_CHANNEL, title, channelCode);
+//    }
+    public Channel(String title, String channelCode,String pic) {
+        this(TYPE_MY_CHANNEL, title, channelCode , pic);
     }
 
-    public Channel(int type, String title, String channelCode) {
+//    public Channel(int type, String title, String channelCode) {
+//        this.name = title;
+//        this.id = channelCode;
+//        itemType = type;
+//    }
+    public Channel(int type, String title, String channelCode,String pic) {
         this.name = title;
         this.id = channelCode;
+        this.pic = pic;
         itemType = type;
     }
+
+
 
     @Override
     public int getItemType() {
