@@ -55,6 +55,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:text="添加更多"
                 android:textColor="@color/main_hint_color"
                 android:textSize="12sp" />
         </LinearLayout>
