@@ -166,7 +166,7 @@ public class SimpleWebCommentActivity extends BaseActivity<ActivityHomeWebCommen
      * 对评论点赞
      */
     private void reqClick(final int position) {
-        ZClient.getService(SportService.class).setClickClass(mAdapter.getItem(position).getComment_id(), 1, "pl").enqueue(new ZCallback<ZResponse<String>>() {
+        ZClient.getService(SportService.class).setClickClass(mAdapter.getItem(position).getComment_id(), 1, "1").enqueue(new ZCallback<ZResponse<String>>() {
             @Override
             public void onSuccess(ZResponse<String> data) {
                 int clickNum = mAdapter.getItem(position).getComment_click_num();

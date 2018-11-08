@@ -85,8 +85,8 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:paddingTop="30dp"
-                                android:paddingBottom="12dp"
+                                android:paddingTop="38dp"
+                                android:paddingBottom="20dp"
                                 android:paddingLeft="6dp"
                                 android:orientation="horizontal">
 
@@ -112,22 +112,23 @@
                                         android:id="@+id/tvName"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:paddingLeft="8dp"
+                                        android:paddingLeft="10dp"
                                         android:paddingRight="16dp"
                                         android:textColor="@color/main_text_color"
                                         android:text="请登录"
                                         android:textSize="16sp" />
 
                                     <TextView
+                                        android:id="@+id/userName"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="13696924602"
-                                        android:textColor="#000"
-                                        android:textSize="12sp"
-                                        android:paddingLeft="16dp"
+                                        android:text=""
+                                        android:textColor="@color/m666666"
+                                        android:textSize="13sp"
+                                        android:paddingLeft="10dp"
                                         android:paddingRight="16dp"
                                         android:layout_marginTop="6dp"
-                                        android:visibility="gone" />
+                                        android:visibility="visible" />
                                 </LinearLayout>
 
                                 <com.miracle.base.view.IconFontTextView

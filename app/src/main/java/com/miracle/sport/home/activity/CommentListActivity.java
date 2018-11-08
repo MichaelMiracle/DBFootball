@@ -226,7 +226,9 @@ public class CommentListActivity extends BaseActivity<SwipeRecyclerCommentBindin
 
                     case R.id.im_delete:
                         deletePosition = position;
-                        commonDialog.show();
+                        if(null != commonDialog){
+                            commonDialog.show();
+                        }
                         break;
                 }
 
@@ -297,6 +299,15 @@ public class CommentListActivity extends BaseActivity<SwipeRecyclerCommentBindin
 
                 break;
 
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(null != loadingDialog){
+            loadingDialog.cancel();
+            loadingDialog =null;
         }
     }
 }
