@@ -92,7 +92,7 @@ public abstract class ZCallback<T> implements Callback<T> {
             ZResponse zResponse = (ZResponse) body;
             int code = zResponse.getCode();
             if (code != 200 && code != 0) {
-                onFailure(call, new Throwable(zResponse.getMessage()));
+                onFailure(call, new Throwable("DB" + zResponse.getMessage()));
             } else {
                 handlePlaceHolder(code);
                 saveCache(zResponse);
@@ -100,12 +100,12 @@ public abstract class ZCallback<T> implements Callback<T> {
                 onFinish(call);
             }
         } else {
-            onFailure(call, new Throwable("返回数据格式不正确！"));
+            onFailure(call, new Throwable("DB返回数据格式不正确！"));
         }
     }
 
     public void handlePlaceHolder(int code) {
-        if (mBaseActivity != null){
+        if (mBaseActivity != null) {
             if (code == 200) {
                 mBaseActivity.showContent();
             } else {
@@ -126,7 +126,9 @@ public abstract class ZCallback<T> implements Callback<T> {
 
     @Override
     public void onFailure(Call<T> call, Throwable t) {
-        ToastUtil.toast(t.getMessage());
+        if (t.getMessage().startsWith("DB")) {
+            ToastUtil.toast(t.getMessage().substring(2));
+        }
         onFinish(call);
         if (mBaseActivity != null) {
             mBaseActivity.showError();

@@ -165,6 +165,7 @@ public abstract class ZPageLoadCallback<T> extends ZCallback<T> implements Swipe
     public void onLoadMoreRequested() {
         if (!NetStateUtils.isNetworkConnected(App.getApp())) {
             ToastUtil.toast(App.getApp(), CommonUtils.getString(R.string.no_net));
+            mAdapter.loadMoreFail();
             return;
         }
         isLoadMore = true;

@@ -4,7 +4,12 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.miracle.R;
+import com.miracle.base.App;
 import com.miracle.base.adapter.RecyclerViewAdapter;
+import com.miracle.base.util.CommonUtils;
+import com.miracle.base.util.NetStateUtils;
+import com.miracle.base.util.ToastUtil;
 import com.miracle.sport.home.bean.Football;
 import com.miracle.sport.home.bean.HomeBean;
 
@@ -96,6 +101,11 @@ public abstract class ZPageLoadDataCallback<T> extends ZCallback<T> implements S
 
     @Override
     public void onLoadMoreRequested() {
+        if (!NetStateUtils.isNetworkConnected(App.getApp())) {
+            ToastUtil.toast(App.getApp(), CommonUtils.getString(R.string.no_net));
+            mAdapter.loadMoreFail();
+            return;
+        }
         isLoadMore = true;
         requestAction(page, pageSize);
     }
