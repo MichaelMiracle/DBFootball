@@ -10,7 +10,6 @@ import com.miracle.sport.community.bean.PostBean;
 import com.miracle.sport.community.bean.PostDetailBean;
 import com.miracle.sport.home.bean.ChannerlKey;
 import com.miracle.sport.home.bean.Football;
-import com.miracle.sport.home.bean.HomeBean;
 import com.miracle.sport.home.bean.HomeCommentBean;
 
 import java.util.List;
@@ -54,7 +53,7 @@ public interface SportService {
      */
     @Headers({"BaseUrl:zh"})
     @Multipart
-    @POST("home/sports/sendCircle")
+    @POST("home/sports/sendTiezi")
     Call<ZResponse> publishPost(@Query("class_id") int class_id, @Query("title") String title, @Query("content") String content, @Part() List<MultipartBody.Part> imgs);
 
 

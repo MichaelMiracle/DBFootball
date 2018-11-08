@@ -83,6 +83,11 @@ public class DDZMyCircleActivity extends BaseActivity<SwipeRecyclerBinding> {
             protected void onFinish(Call<ZResponse<List<MyCircleBean>>> call) {
                 super.onFinish(call);
             }
+
+            @Override
+            public BaseActivity getBaseActivity() {
+                return DDZMyCircleActivity.this;
+            }
         });
     }
 
