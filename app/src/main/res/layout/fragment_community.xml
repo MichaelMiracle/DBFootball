@@ -74,6 +74,7 @@
                             android:id="@+id/zRadiogroup"
                             android:layout_width="match_parent"
                             android:layout_height="48dp"
+                            android:layout_marginTop="@dimen/dp_10"
                             android:background="@drawable/bottom_line">
 
                             <com.miracle.base.view.zradiogroup.ZRadioButton
@@ -83,6 +84,13 @@
                                 app:ZRadioButton_Text="热门"
                                 app:ZRadioButton_TextSize="16sp"
                                 app:ZRadioButton_indicator_position="bottom" />
+
+                            <View
+                                android:layout_width="1dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginBottom="8dp"
+                                android:background="@color/main_divider_color" />
 
                             <com.miracle.base.view.zradiogroup.ZRadioButton
                                 android:layout_width="0dp"
@@ -116,6 +124,14 @@
                     app:ZRadioButton_Text="热门"
                     app:ZRadioButton_TextSize="16sp"
                     app:ZRadioButton_indicator_position="bottom" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/main_divider_color" />
+
 
                 <com.miracle.base.view.zradiogroup.ZRadioButton
                     android:layout_width="0dp"

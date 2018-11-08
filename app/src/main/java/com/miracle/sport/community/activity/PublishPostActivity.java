@@ -177,6 +177,7 @@ public class PublishPostActivity extends BaseActivity<ActivityPublishPostBinding
             @Override
             public void onSuccess(ZResponse data) {
                 ToastUtil.toast(data.getMessage());
+                setResult(RESULT_OK);
                 finish();
             }
         });

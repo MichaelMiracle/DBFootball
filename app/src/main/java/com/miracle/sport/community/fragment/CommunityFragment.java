@@ -11,6 +11,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.miracle.R;
 import com.miracle.base.BaseFragment;
+import com.miracle.base.Constant;
 import com.miracle.base.GOTO;
 import com.miracle.base.network.GlideApp;
 import com.miracle.base.network.RequestUtil;
@@ -29,6 +30,8 @@ import com.youth.banner.loader.ImageLoader;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.app.Activity.RESULT_OK;
 
 /**
  * Created by Michael on 2018/10/29 11:23 (星期一)
@@ -110,7 +113,7 @@ public class CommunityFragment extends BaseFragment<FragmentCommunityBinding> {
                 if (CommonUtils.getUser() == null) {
                     GOTO.LoginActivity(mContext);
                 } else {
-                    startActivity(new Intent(mContext, PublishPostActivity.class));
+                    startActivityForResult(new Intent(mContext, PublishPostActivity.class), Constant.REQUSET_CODE_PUBLISH_POST);
                 }
             }
         });
@@ -186,4 +189,11 @@ public class CommunityFragment extends BaseFragment<FragmentCommunityBinding> {
         }
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == Constant.REQUSET_CODE_PUBLISH_POST && resultCode == RESULT_OK) {
+            binding.zRadiogroup.setCheck(1);
+        }
+
+    }
 }

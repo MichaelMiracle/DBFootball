@@ -46,6 +46,7 @@ public interface Constant {
     int REQUSET_CODE_CAMERA = 1;
     int REQUSET_CODE_MEFRAGMENT_ACCOUNTCENTER = 2;
     int REQUSET_CODE_SCAN = 3;
+    int REQUSET_CODE_PUBLISH_POST = 4;
     int FROM_ProductDetailsAct = 0;
     int FROM_MeFragment = 1;
 }
