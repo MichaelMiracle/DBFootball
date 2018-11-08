@@ -61,8 +61,8 @@ public interface SportService {
      * 帖子评论列表
      */
     @Headers({"BaseUrl:zh"})
-    @POST("home/Goodcaipiao/tieziCommentList")
-    Call<ZResponse<List<PostDetailBean.CommentBean>>> getPostCommentList(@Query("id") int id, @Query("page") int page, @Query("pageSize") int pageSize);
+    @POST("home/sports/tieziCommentList")
+    Call<ZResponse<List<PostDetailBean.CommentBean>>> getPostCommentList(@Query("createid") int id, @Query("page") int page, @Query("pageSize") int pageSize);
 
     /**
      * 帖子发评论

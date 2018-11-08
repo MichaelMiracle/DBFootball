@@ -2,7 +2,6 @@ package com.miracle.sport.community.adapter;
 
 import android.content.Context;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -11,7 +10,6 @@ import com.miracle.R;
 import com.miracle.base.adapter.RecyclerViewAdapter;
 import com.miracle.base.network.GlideApp;
 import com.miracle.base.util.CommonUtils;
-import com.miracle.base.util.ContextHolder;
 import com.miracle.base.util.DisplayUtil;
 import com.miracle.base.view.ZImagePreviewer;
 import com.miracle.sport.community.bean.PostBean;
@@ -33,7 +31,7 @@ public class PostListAdapter extends RecyclerViewAdapter<PostBean> {
         super(R.layout.item_post);
         this.context = context;
         zImagePreviewer = new ZImagePreviewer(context);
-        params = new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1);
+        params = new LinearLayout.LayoutParams(0, 400, 1);
         params.setMargins(2, 0, 2, 0);
         colorLike = CommonUtils.getColor(R.color.red_ball);
         colorDislike = CommonUtils.getColor(R.color.main_color_grey);
@@ -64,7 +62,7 @@ public class PostListAdapter extends RecyclerViewAdapter<PostBean> {
                 imageView.setLayoutParams(params);
                 imageView.setAdjustViewBounds(true);
                 imageView.setMaxHeight((int) DisplayUtil.dip2px(context, 200));
-                imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+                imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
                 GlideApp.with(context).load(thumbs.get(i))
                         .placeholder(R.mipmap.defaule_img)
                         .error(R.mipmap.empty)

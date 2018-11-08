@@ -41,6 +41,11 @@ public abstract class ZCallback<T> implements Callback<T> {
         this.mSwipeRefreshLayout = swipeRefreshLayout;
     }
 
+    public ZCallback(SwipeRefreshLayout swipeRefreshLayout, BaseActivity baseActivity) {
+        this.mSwipeRefreshLayout = swipeRefreshLayout;
+        mBaseActivity = baseActivity;
+    }
+
     public ZCallback(Dialog dialog) {
         mDialog = dialog;
     }

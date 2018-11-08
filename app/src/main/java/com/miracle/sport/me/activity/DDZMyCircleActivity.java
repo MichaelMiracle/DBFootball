@@ -35,7 +35,6 @@ public class DDZMyCircleActivity extends BaseActivity<SwipeRecyclerBinding> {
     @Override
     public void initView() {
         setTitle("我的社区");
-        showContent();
         setRight(CommonUtils.getString(R.string.icon_add), CommonUtils.getColor(R.color.white));
         setRightClickListener(new View.OnClickListener() {
             @Override
@@ -73,7 +72,7 @@ public class DDZMyCircleActivity extends BaseActivity<SwipeRecyclerBinding> {
 
     @Override
     public void loadData() {
-        ZClient.getService(SportService.class).getMyCircleList().enqueue(new ZCallback<ZResponse<List<MyCircleBean>>>(binding.swipeRefreshLayout) {
+        ZClient.getService(SportService.class).getMyCircleList().enqueue(new ZCallback<ZResponse<List<MyCircleBean>>>(binding.swipeRefreshLayout, this) {
             @Override
             public void onSuccess(ZResponse<List<MyCircleBean>> data) {
                 mAdapter.setNewData(data.getData());
@@ -82,11 +81,6 @@ public class DDZMyCircleActivity extends BaseActivity<SwipeRecyclerBinding> {
             @Override
             protected void onFinish(Call<ZResponse<List<MyCircleBean>>> call) {
                 super.onFinish(call);
-            }
-
-            @Override
-            public BaseActivity getBaseActivity() {
-                return DDZMyCircleActivity.this;
             }
         });
     }
