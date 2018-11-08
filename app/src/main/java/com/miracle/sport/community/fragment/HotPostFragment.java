@@ -7,9 +7,11 @@ import com.miracle.R;
 import com.miracle.base.BaseFragment;
 import com.miracle.base.GOTO;
 import com.miracle.base.network.RequestUtil;
+import com.miracle.base.network.ZCallback;
 import com.miracle.base.network.ZClient;
 import com.miracle.base.network.ZPageLoadCallback;
 import com.miracle.base.network.ZResponse;
+import com.miracle.base.util.ToastUtil;
 import com.miracle.databinding.FragmentHotpostBinding;
 import com.miracle.sport.SportService;
 import com.miracle.sport.community.activity.CommunityActivity;
@@ -79,6 +81,23 @@ public class HotPostFragment extends BaseFragment<FragmentHotpostBinding> {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 GOTO.PostDetailActivity(getActivity(), mAdapter.getItem(position).getId());
+            }
+        });
+
+        mAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+            @Override
+            public void onItemChildClick(BaseQuickAdapter adapter, View view, final int position) {
+                final PostBean item = mAdapter.getItem(position);
+                ZClient.getService(SportService.class).likePost(item.getId(), item.getClick() == 1 ? 0 : 1, 1).enqueue(new ZCallback<ZResponse>() {
+                    @Override
+                    public void onSuccess(ZResponse data) {
+                        ToastUtil.toast(data.getMessage());
+                        PostBean postBean = mAdapter.getItem(position);
+                        postBean.setClick(postBean.getClick() == 1 ? 0 : 1);
+                        postBean.setClick_num(postBean.getClick() == 1 ? postBean.getClick_num() + 1 : postBean.getClick_num() - 1);
+                        mAdapter.notifyDataSetChanged();
+                    }
+                });
             }
         });
     }

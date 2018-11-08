@@ -7,9 +7,11 @@ import com.miracle.R;
 import com.miracle.base.BaseFragment;
 import com.miracle.base.GOTO;
 import com.miracle.base.network.RequestUtil;
+import com.miracle.base.network.ZCallback;
 import com.miracle.base.network.ZClient;
 import com.miracle.base.network.ZPageLoadCallback;
 import com.miracle.base.network.ZResponse;
+import com.miracle.base.util.ToastUtil;
 import com.miracle.databinding.FragmentHotpostBinding;
 import com.miracle.sport.SportService;
 import com.miracle.sport.community.activity.CommunityActivity;
@@ -72,6 +74,21 @@ public class LatestPostFragment extends BaseFragment<FragmentHotpostBinding> {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 GOTO.PostDetailActivity(getActivity(), mAdapter.getItem(position).getId());
+            }
+        });
+        mAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+            @Override
+            public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+                final PostBean item = mAdapter.getItem(position);
+                ZClient.getService(SportService.class).likePost(item.getId(), item.getClick() == 1 ? 0 : 1, 1).enqueue(new ZCallback<ZResponse>() {
+                    @Override
+                    public void onSuccess(ZResponse data) {
+                        ToastUtil.toast(data.getMessage());
+                        item.setClick(item.getClick() == 1 ? 0 : 1);
+                        item.setClick_num(item.getClick() == 1 ? item.getClick_num() + 1 : item.getClick_num() - 1);
+                        mAdapter.notifyDataSetChanged();
+                    }
+                });
             }
         });
     }

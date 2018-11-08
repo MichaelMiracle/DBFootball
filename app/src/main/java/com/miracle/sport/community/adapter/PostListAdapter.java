@@ -40,6 +40,7 @@ public class PostListAdapter extends RecyclerViewAdapter<PostBean> {
     @Override
     protected void convert(BaseViewHolder helper, final PostBean item) {
         helper.addOnClickListener(R.id.tvLike);
+        helper.addOnClickListener(R.id.llLike);
 
         helper.setText(R.id.tvUserName, item.getNickname());
         GlideApp.with(context).load(item.getImg()).placeholder(R.mipmap.defaule_img).into((ImageView) helper.getView(R.id.ivUserImg));
