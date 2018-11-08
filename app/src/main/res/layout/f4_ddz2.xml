@@ -280,31 +280,44 @@
                     android:id="@+id/ibCustomerService"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
-                    app:ItemBar_TextSize="14sp"
+                    app:ItemBar_TextSize="16sp"
                     android:layout_marginTop="6dp"
                     app:ItemBar_Left_TextColor="@color/zradiobutton_unchecked"
                     app:ItemBar_Left_Icon="@string/icon_customer_service"
+                    app:ItemBar_Left_TextSize="24sp"
                     app:ItemBar_Text="客服" />
 
                 <com.miracle.base.view.ItemBar
                     android:id="@+id/ibAboutUs"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
-                    app:ItemBar_TextSize="14sp"
+                    app:ItemBar_TextSize="16sp"
                     android:layout_marginTop="1dp"
                     app:ItemBar_Left_TextColor="@color/zradiobutton_unchecked"
                     app:ItemBar_Left_Icon="@string/icon_about_us"
+                    app:ItemBar_Left_TextSize="24sp"
                     app:ItemBar_Text="关于我们" />
 
                 <com.miracle.base.view.ItemBar
                     android:id="@+id/appUpdate"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
-                    app:ItemBar_TextSize="14sp"
+                    app:ItemBar_TextSize="16sp"
                     android:layout_marginTop="1dp"
                     app:ItemBar_Left_TextColor="@color/zradiobutton_unchecked"
                     app:ItemBar_Left_Icon="@string/icon_update_bb"
+                    app:ItemBar_Left_TextSize="24sp"
                     app:ItemBar_Text="更新版本" />
+
+                <com.miracle.base.view.ItemBar
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    app:ItemBar_TextSize="16sp"
+                    android:layout_marginTop="1dp"
+                    app:ItemBar_Left_TextColor="@color/zradiobutton_unchecked"
+                    app:ItemBar_Left_Icon="@string/icon_clean"
+                    app:ItemBar_Left_TextSize="24sp"
+                    app:ItemBar_Text="清除缓存" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -330,7 +343,8 @@
                             app:ZRadioButton_Icon="@string/icon_order_manage"
                             app:ZRadioButton_IconTextSize="22sp"
                             app:ZRadioButton_Text="赛事分析"
-                            app:ZRadioButton_TextSize="12sp"></com.miracle.base.view.zradiogroup.ZRadioButton>
+                            app:ZRadioButton_TextSize="12sp">
+                        </com.miracle.base.view.zradiogroup.ZRadioButton>
                     </LinearLayout>
 
                     <LinearLayout
