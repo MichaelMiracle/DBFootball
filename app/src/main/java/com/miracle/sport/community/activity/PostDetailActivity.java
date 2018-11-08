@@ -46,7 +46,7 @@ public class PostDetailActivity extends BaseActivity<ActivityPostDetailBinding> 
     }
 
     private void setData(PostDetailBean data) {
-        binding.tvCircle.setText(data.getSq_name());
+        binding.tvCircle.setText(data.getName());
         binding.tvTitle.setText(data.getTitle());
         binding.tvContent.setText(data.getContent());
         binding.commentBar.setCommentNum(data.getComment_num());

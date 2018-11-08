@@ -10,18 +10,15 @@ public class PostDetailBean {
 
     /**
      * id : 2
-     * title : 趁热吃人
-     * content : 那个非常非常冯v给他 发的东方给
-     * thumb : ["http://xiaozhuang.988lhkj.com/uploads/20181103/846facc98a001d256dff45588ea908d2.jpg","http://xiaozhuang.988lhkj.com/uploads/20181103/a5aafeb2a15a81cd22795de69dec4954.jpg","http://xiaozhuang.988lhkj.com/uploads/20181103/f5ff9b7f9db461ccb6487245c16e848a.jpg"]
-     * click_num : 0
-     * comment_num : 4
-     * class_id : 16
-     * add_time : null
-     * sq_name : 双色球预测
-     * nickname : Michael
-     * user_id : 12
-     * click : 0
-     * comment : [{"comment_id":5,"content":"范冰冰他不敢半天","add_time":"2018-11-03 20:50:37","nickname":"Michael","user_id":12,"img":"http://9.988lhkj.com/app/imgcom.miracle/10//M6UqcyAR2VQEPAJ34d0y17eapKJQzVDpYDOcpTml.jpeg","create_id":2,"comment_click_num":0,"click":0,"child":[],"child_count":0},{"comment_id":4,"content":"给不给吧过","add_time":"2018-11-03 20:50:26","nickname":"Michael","user_id":12,"img":"http://9.988lhkj.com/app/imgcom.miracle/10//M6UqcyAR2VQEPAJ34d0y17eapKJQzVDpYDOcpTml.jpeg","create_id":2,"comment_click_num":0,"click":0,"child":[],"child_count":0},{"comment_id":3,"content":"或许uu","add_time":"2018-11-03 20:48:43","nickname":"Michael","user_id":12,"img":"http://9.988lhkj.com/app/imgcom.miracle/10//M6UqcyAR2VQEPAJ34d0y17eapKJQzVDpYDOcpTml.jpeg","create_id":2,"comment_click_num":0,"click":0,"child":[],"child_count":0},{"comment_id":2,"content":"或许uu","add_time":"2018-11-03 20:47:48","nickname":"Michael","user_id":12,"img":"http://9.988lhkj.com/app/imgcom.miracle/10//M6UqcyAR2VQEPAJ34d0y17eapKJQzVDpYDOcpTml.jpeg","create_id":2,"comment_click_num":0,"click":0,"child":[{"content":"或许uu","add_time":"2018-11-03 20:47:48","nickname":"Michael","user_id":12,"to_name":null,"to_user_id":null},{"content":"或许uu","add_time":"2018-11-03 20:48:43","nickname":"Michael","user_id":12,"to_name":null,"to_user_id":null},{"content":"给不给吧过","add_time":"2018-11-03 20:50:26","nickname":"Michael","user_id":12,"to_name":null,"to_user_id":null},{"content":"范冰冰他不敢半天","add_time":"2018-11-03 20:50:37","nickname":"Michael","user_id":12,"to_name":null,"to_user_id":null}],"child_count":4}]
+     * title : invoker
+     * content : 今天我打了三个小时的球，出了两斤汗水
+     * thumb : ["http://8.988lhkj.com/uploads/20181101/2448f8f0edb86f87eff3f5f7ed03a193.jpg","http://8.988lhkj.com/uploads/20181101/593aedf3cea226246bf8a792882e441b.jpg","http://8.988lhkj.com/uploads/20181101/156eb8f93ee0879c14b8737b79d0ae60.jpg"]
+     * click_num : 5
+     * comment_num : 11
+     * circle_id : 14
+     * name : 王者争逐
+     * click : 1
+     * comment : [{"comment_id":2,"content":"hhhh","add_time":"2018-11-08 11:51:46","nickname":"Michael","user_id":12,"img":"http://9.988lhkj.com/app/imgcom.miracle.michael.mdgame/11//P4rDbfIF2V5tWUpff8G0kh0X57VxAfXFSAQ7tVem.jpeg","createid":2,"comment_click_num":2,"click":0,"child":[{"content":"hbuub","add_time":"2018-11-08 11:50:54","nickname":"Michael","user_id":12,"to_name":null,"to_user_id":null},{"content":"hhhh","add_time":"2018-11-08 11:51:46","nickname":"Michael","user_id":12,"to_name":null,"to_user_id":null}],"child_count":2},{"comment_id":1,"content":"hbuub","add_time":"2018-11-08 11:50:54","nickname":"Michael","user_id":12,"img":"http://9.988lhkj.com/app/imgcom.miracle.michael.mdgame/11//P4rDbfIF2V5tWUpff8G0kh0X57VxAfXFSAQ7tVem.jpeg","createid":2,"comment_click_num":0,"click":0,"child":[],"child_count":0}]
      */
 
     private int id;
@@ -29,11 +26,8 @@ public class PostDetailBean {
     private String content;
     private int click_num;
     private int comment_num;
-    private int class_id;
-    private Object add_time;
-    private String sq_name;
-    private String nickname;
-    private int user_id;
+    private int circle_id;
+    private String name;
     private int click;
     private List<String> thumb;
     private List<CommentBean> comment;
@@ -78,44 +72,20 @@ public class PostDetailBean {
         this.comment_num = comment_num;
     }
 
-    public int getClass_id() {
-        return class_id;
+    public int getCircle_id() {
+        return circle_id;
     }
 
-    public void setClass_id(int class_id) {
-        this.class_id = class_id;
+    public void setCircle_id(int circle_id) {
+        this.circle_id = circle_id;
     }
 
-    public Object getAdd_time() {
-        return add_time;
+    public String getName() {
+        return name;
     }
 
-    public void setAdd_time(Object add_time) {
-        this.add_time = add_time;
-    }
-
-    public String getSq_name() {
-        return sq_name;
-    }
-
-    public void setSq_name(String sq_name) {
-        this.sq_name = sq_name;
-    }
-
-    public String getNickname() {
-        return nickname;
-    }
-
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
-    }
-
-    public int getUser_id() {
-        return user_id;
-    }
-
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getClick() {
@@ -144,17 +114,17 @@ public class PostDetailBean {
 
     public static class CommentBean {
         /**
-         * comment_id : 5
-         * content : 范冰冰他不敢半天
-         * add_time : 2018-11-03 20:50:37
+         * comment_id : 2
+         * content : hhhh
+         * add_time : 2018-11-08 11:51:46
          * nickname : Michael
          * user_id : 12
-         * img : http://9.988lhkj.com/app/imgcom.miracle/10//M6UqcyAR2VQEPAJ34d0y17eapKJQzVDpYDOcpTml.jpeg
-         * create_id : 2
-         * comment_click_num : 0
+         * img : http://9.988lhkj.com/app/imgcom.miracle.michael.mdgame/11//P4rDbfIF2V5tWUpff8G0kh0X57VxAfXFSAQ7tVem.jpeg
+         * createid : 2
+         * comment_click_num : 2
          * click : 0
-         * child : []
-         * child_count : 0
+         * child : [{"content":"hbuub","add_time":"2018-11-08 11:50:54","nickname":"Michael","user_id":12,"to_name":null,"to_user_id":null},{"content":"hhhh","add_time":"2018-11-08 11:51:46","nickname":"Michael","user_id":12,"to_name":null,"to_user_id":null}]
+         * child_count : 2
          */
 
         private int comment_id;
@@ -163,11 +133,11 @@ public class PostDetailBean {
         private String nickname;
         private int user_id;
         private String img;
-        private int create_id;
+        private int createid;
         private int comment_click_num;
         private int click;
         private int child_count;
-        private List<?> child;
+        private List<ChildBean> child;
 
         public int getComment_id() {
             return comment_id;
@@ -217,12 +187,12 @@ public class PostDetailBean {
             this.img = img;
         }
 
-        public int getCreate_id() {
-            return create_id;
+        public int getCreateid() {
+            return createid;
         }
 
-        public void setCreate_id(int create_id) {
-            this.create_id = create_id;
+        public void setCreateid(int createid) {
+            this.createid = createid;
         }
 
         public int getComment_click_num() {
@@ -249,12 +219,78 @@ public class PostDetailBean {
             this.child_count = child_count;
         }
 
-        public List<?> getChild() {
+        public List<ChildBean> getChild() {
             return child;
         }
 
-        public void setChild(List<?> child) {
+        public void setChild(List<ChildBean> child) {
             this.child = child;
+        }
+
+        public static class ChildBean {
+            /**
+             * content : hbuub
+             * add_time : 2018-11-08 11:50:54
+             * nickname : Michael
+             * user_id : 12
+             * to_name : null
+             * to_user_id : null
+             */
+
+            private String content;
+            private String add_time;
+            private String nickname;
+            private int user_id;
+            private Object to_name;
+            private Object to_user_id;
+
+            public String getContent() {
+                return content;
+            }
+
+            public void setContent(String content) {
+                this.content = content;
+            }
+
+            public String getAdd_time() {
+                return add_time;
+            }
+
+            public void setAdd_time(String add_time) {
+                this.add_time = add_time;
+            }
+
+            public String getNickname() {
+                return nickname;
+            }
+
+            public void setNickname(String nickname) {
+                this.nickname = nickname;
+            }
+
+            public int getUser_id() {
+                return user_id;
+            }
+
+            public void setUser_id(int user_id) {
+                this.user_id = user_id;
+            }
+
+            public Object getTo_name() {
+                return to_name;
+            }
+
+            public void setTo_name(Object to_name) {
+                this.to_name = to_name;
+            }
+
+            public Object getTo_user_id() {
+                return to_user_id;
+            }
+
+            public void setTo_user_id(Object to_user_id) {
+                this.to_user_id = to_user_id;
+            }
         }
     }
 }
