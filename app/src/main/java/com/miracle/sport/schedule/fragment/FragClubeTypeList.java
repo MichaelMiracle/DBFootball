@@ -9,18 +9,23 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.miracle.R;
 import com.miracle.base.BaseFragment;
 import com.miracle.base.network.PageLoadCallback;
+import com.miracle.base.network.RequestUtil;
 import com.miracle.base.network.ZClient;
 import com.miracle.base.network.ZPageLoadCallback;
+import com.miracle.base.network.ZResponse;
 import com.miracle.databinding.FragClubetypeListBinding;
 import com.miracle.sport.schedule.activity.ClubeItemVPAct;
 import com.miracle.sport.schedule.adapter.ClubeTypeAdapter;
+import com.miracle.sport.schedule.bean.ClubeType;
 import com.miracle.sport.schedule.net.FootClubServer;
+
+import java.util.List;
 
 import retrofit2.Call;
 
 //賽事 list
 public class FragClubeTypeList extends BaseFragment<FragClubetypeListBinding> {
-    ZPageLoadCallback callback;
+    ZPageLoadCallback<ZResponse<List<ClubeType>>> callback;
     ClubeTypeAdapter clubTypeAdapter;
 
     @Override
@@ -44,22 +49,27 @@ public class FragClubeTypeList extends BaseFragment<FragClubetypeListBinding> {
             }
         });
 
-        callback = new ZPageLoadCallback(clubTypeAdapter ,binding.recyclerView) {
+        callback = new ZPageLoadCallback<ZResponse<List<ClubeType>>>(clubTypeAdapter ,binding.recyclerView) {
             @Override
             public void requestAction(int page, int limit) {
-                ZClient.getService(FootClubServer.class).getFootClubTypes(page, limit).enqueue(this);
+                if(page == 1)
+                    callback.setCachKey("homepage_clubetype");
+                else
+                    callback.setCachKey("");
+                Call call = ZClient.getService(FootClubServer.class).getFootClubTypes(page, limit);
+                RequestUtil.cacheUpdate(call, this);
             }
 
             @Override
             public void onFinish(Call call) {
                 super.onFinish(call);
-                setUIStatus(ShowStat.NORMAL);
+//                setUIStatus(ShowStat.NORMAL);
             }
 
             @Override
             public void onFailure(Call call, Throwable t) {
                 super.onFailure(call, t);
-                setUIStatus(ShowStat.ERR);
+//                setUIStatus(ShowStat.ERR);
             }
         };
         callback.setNetStatusUI(this);

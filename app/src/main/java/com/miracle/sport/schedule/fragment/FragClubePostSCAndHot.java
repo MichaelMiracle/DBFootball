@@ -6,12 +6,21 @@ import android.view.View;
 
 import com.miracle.R;
 import com.miracle.base.network.PageLoadCallback;
+import com.miracle.base.network.RequestUtil;
 import com.miracle.base.network.ZClient;
+import com.miracle.base.network.ZPageLoadCallback;
+import com.miracle.base.network.ZPageLoadDataCallback;
+import com.miracle.base.network.ZResponse;
 import com.miracle.databinding.FragClubePostBinding;
 import com.miracle.sport.schedule.adapter.ClubePostSCAdapter;
 import com.miracle.sport.schedule.bean.ClubeItem;
 import com.miracle.sport.schedule.bean.ClubeType;
+import com.miracle.sport.schedule.bean.post.ClubePostSC;
 import com.miracle.sport.schedule.net.FootClubServer;
+
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
+import java.util.List;
 
 import retrofit2.Call;
 
@@ -19,7 +28,7 @@ import retrofit2.Call;
 public class FragClubePostSCAndHot extends HandleFragment<FragClubePostBinding> {
     ClubeItem req;
     ClubeType parentType;
-    PageLoadCallback callback;
+    ZPageLoadCallback<ZResponse<List<ClubePostSC>>> callback;
     ClubePostSCAdapter adapter;
     boolean isHot = false;
 
@@ -53,8 +62,9 @@ public class FragClubePostSCAndHot extends HandleFragment<FragClubePostBinding> 
             callback.onRefresh();
         else if(msg.what == 2){
             isHot = true;
-            if(callback != null && adapter != null)
+            if(callback != null && adapter != null) {
                 callback.onRefresh();
+            }
         }
     }
 
@@ -70,25 +80,31 @@ public class FragClubePostSCAndHot extends HandleFragment<FragClubePostBinding> 
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         binding.recyclerView.setHasFixedSize(true);
 
-        callback = new PageLoadCallback(adapter, binding.recyclerView) {
+        callback = new ZPageLoadCallback<ZResponse<List<ClubePostSC>>>(adapter, binding.recyclerView) {
             @Override
             public void requestAction(int page, int limit) {
-                if(isHot)
-                    ZClient.getService(FootClubServer.class).getFootClubTypesHot(page,limit).enqueue(this);
-                else
-                    ZClient.getService(FootClubServer.class).getFootClubPostSC(parentType.getId(),req.getType(),page,limit).enqueue(this);
+                if(isHot) {
+                    if(page == 1)
+                        callback.setCachKey("homepage_schot");
+                    else
+                        callback.setCachKey("");
+                    Call call = ZClient.getService(FootClubServer.class).getFootClubTypesHot(page, limit);
+                    RequestUtil.cacheUpdate(call, this);
+                }else {
+                    ZClient.getService(FootClubServer.class).getFootClubPostSC(parentType.getId(), req.getType(), page, limit).enqueue(this);
+                }
             }
 
             @Override
             public void onFinish(Call call) {
                 super.onFinish(call);
-                setUIStatus(ShowStat.NORMAL);
+//                setUIStatus(ShowStat.NORMAL);
             }
 
             @Override
             public void onFailure(Call call, Throwable t) {
                 super.onFailure(call, t);
-                setUIStatus(ShowStat.ERR);
+//                setUIStatus(ShowStat.ERR);
             }
         };
         callback.initSwipeRefreshLayout(binding.swipeRefreshLayout);
