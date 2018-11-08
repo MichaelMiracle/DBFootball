@@ -26,7 +26,7 @@ public class SportMainActivity extends BaseActivity<ActivitySportMainBinding> {
         hideTitle();
         showContent();
         //HomeFragment   FragClubeTypeChannelVP
-        binding.zRadiogroup.setUp(getSupportFragmentManager(), R.id.container, new FragClubeTypeChannelVP(), new HomeFragment(), new CommunityFragment(), new MeFragment());
+        binding.zRadiogroup.setUp(getSupportFragmentManager(), R.id.container, new HomeFragment(), new FragClubeTypeChannelVP(), new CommunityFragment(), new MeFragment());
     }
 
     @Override

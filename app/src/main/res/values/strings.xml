@@ -2,22 +2,27 @@
 
     <!--inconfont-->
     <string name="icon_back">&#xe625;</string>
-    <string name="icon_tab_home">&#xe6d1;</string>
+    <string name="icon_tab_home">&#xe665;</string>
     <string name="icon_tab_category">&#xe636;</string>
     <string name="icon_tab_auction">&#xeef4;</string>
-    <string name="icon_tab_me">&#xe921;</string>
+    <string name="icon_tab_me">&#xe64e;</string>
     <string name="icon_right_arrow">&#xe655;</string>
     <string name="icon_order_manage">&#xe647;</string>
     <string name="icon_bail_manage">&#xe69d;</string>
     <string name="icon_me_info">&#xe613;</string>
     <string name="icon_settings">&#xe619;</string>
     <string name="icon_help">&#xe654;</string>
-    <string name="icon_about_us">&#xe673;</string>
-    <string name="icon_customer_service">&#xe614;</string>
+    <!--关于我们-->
+    <string name="icon_about_us">&#xe6a1;</string>
+    <!--更新版本-->
+    <string name="icon_update_bb">&#xe616;</string>
+    <!--清除-->
+    <string name="icon_clean">&#xe650;</string>
+    <string name="icon_customer_service">&#xe64f;</string>
     <string name="icon_contact_customer_service">&#xe60d;</string>
     <string name="icon_qq">&#xe61c;</string>
     <string name="icon_wechat">&#xe600;</string>
-    <string name="icon_chatroom">&#xe64b;</string>
+    <string name="icon_chatroom">&#xe611;</string>
     <string name="icon_clear_cache">&#xe660;</string>
     <string name="icon_check_update">&#xe601;</string>
     <string name="icon_share">&#xe624;</string>
@@ -33,9 +38,9 @@
     <!--评论-->
     <string name="icon_comment">&#xe643;</string>
     <!--奖杯-->
-    <string name="icon_cup">&#xe8a9;</string>
+    <string name="icon_cup">&#xe67c;</string>
     <!--社区-->
-    <string name="icon_community">&#xe60a;</string>
+    <string name="icon_community">&#xe696;</string>
     <!--加号，添加图片-->
     <string name="icon_add">&#xe663;</string>
     <!--删除X-->

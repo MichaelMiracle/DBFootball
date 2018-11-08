@@ -203,7 +203,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="6dp"
-                            android:text="我的圈子"
+                            android:text="我的社区"
                             android:textSize="18sp" />
 
                     </LinearLayout>
@@ -282,7 +282,7 @@
                     android:layout_height="45dp"
                     app:ItemBar_TextSize="14sp"
                     android:layout_marginTop="6dp"
-                    app:ItemBar_Left_TextColor="@color/dark_yellow"
+                    app:ItemBar_Left_TextColor="@color/zradiobutton_unchecked"
                     app:ItemBar_Left_Icon="@string/icon_customer_service"
                     app:ItemBar_Text="客服" />
 
@@ -292,8 +292,8 @@
                     android:layout_height="45dp"
                     app:ItemBar_TextSize="14sp"
                     android:layout_marginTop="1dp"
-                    app:ItemBar_Left_TextColor="@color/dark_yellow"
-                    app:ItemBar_Left_Icon="@string/icon_customer_service"
+                    app:ItemBar_Left_TextColor="@color/zradiobutton_unchecked"
+                    app:ItemBar_Left_Icon="@string/icon_about_us"
                     app:ItemBar_Text="关于我们" />
 
                 <com.miracle.base.view.ItemBar
@@ -302,8 +302,8 @@
                     android:layout_height="45dp"
                     app:ItemBar_TextSize="14sp"
                     android:layout_marginTop="1dp"
-                    app:ItemBar_Left_TextColor="@color/dark_yellow"
-                    app:ItemBar_Left_Icon="@string/icon_customer_service"
+                    app:ItemBar_Left_TextColor="@color/zradiobutton_unchecked"
+                    app:ItemBar_Left_Icon="@string/icon_update_bb"
                     app:ItemBar_Text="更新版本" />
 
                 <LinearLayout

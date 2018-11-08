@@ -52,7 +52,7 @@
                 android:layout_weight="1"
                 app:ZRadioButton_Icon="@string/icon_cup"
                 app:ZRadioButton_IconTextSize="22sp"
-                app:ZRadioButton_Text="资讯" />
+                app:ZRadioButton_Text="赛程" />
 
             <com.miracle.base.view.zradiogroup.ZRadioButton
                 android:layout_width="0dp"
@@ -61,7 +61,7 @@
                 android:layout_weight="1"
                 app:ZRadioButton_Icon="@string/icon_community"
                 app:ZRadioButton_IconTextSize="22sp"
-                app:ZRadioButton_Text="圈子" />
+                app:ZRadioButton_Text="社区" />
 
             <LinearLayout
                 android:id="@+id/rlGroupChat"
@@ -76,11 +76,11 @@
                 <com.miracle.base.view.IconFontTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="7dp"
                     android:gravity="center"
                     android:text="@string/icon_chatroom"
                     android:textColor="@drawable/selector_tab_text"
-                    android:textSize="16sp" />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:layout_width="match_parent"
