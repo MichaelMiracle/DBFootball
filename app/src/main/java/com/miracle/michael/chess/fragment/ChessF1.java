@@ -64,12 +64,12 @@ public class ChessF1 extends BaseFragment<F1ChessBinding> {
 
     private void initBanner(BannerLayoutBinding bannerBinding) {
         images = new ArrayList<>();
-        images.add("file:///android_asset/chess/1.png");
-        images.add("file:///android_asset/chess/2.png");
-        images.add("file:///android_asset/chess/3.png");
-        images.add("file:///android_asset/chess/4.png");
-        images.add("file:///android_asset/chess/5.png");
-        images.add("file:///android_asset/chess/6.png");
+//        images.add("file:///android_asset/chess/1.png");
+//        images.add("file:///android_asset/chess/2.png");
+//        images.add("file:///android_asset/chess/3.png");
+//        images.add("file:///android_asset/chess/4.png");
+//        images.add("file:///android_asset/chess/5.png");
+//        images.add("file:///android_asset/chess/6.png");
         bannerBinding.banner.setImages(images).setImageLoader(new ImageLoader() {
             @Override
             public void displayImage(Context context, Object path, ImageView imageView) {
