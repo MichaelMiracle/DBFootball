@@ -1,12 +1,17 @@
 package com.miracle.sport.home.fragment;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.text.Html;
+import android.text.Spanned;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
+import com.gongwen.marqueen.SimpleMF;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.lzy.okgo.OkGo;
@@ -18,11 +23,13 @@ import com.miracle.base.Constant;
 import com.miracle.base.http.CacheConstant;
 import com.miracle.base.http.Common.EncryptCallback;
 import com.miracle.base.http.model.bean.PageResultForJob;
+import com.miracle.base.network.GlideApp;
 import com.miracle.base.network.RequestUtil;
 import com.miracle.base.network.ZCallback;
 import com.miracle.base.network.ZClient;
 import com.miracle.base.network.ZResponse;
 import com.miracle.base.util.CommonUtils;
+import com.miracle.base.util.ContextHolder;
 import com.miracle.base.util.ToastUtil;
 import com.miracle.databinding.FragmentHomeBinding;
 import com.miracle.sport.SportService;
@@ -36,8 +43,11 @@ import com.miracle.sport.home.listener.OnChannelListener;
 import com.miracle.sport.home.util.PreUtils;
 import com.miracle.sport.home.util.UIUtils;
 import com.yanzhenjie.sofia.Sofia;
+import com.youth.banner.listener.OnBannerListener;
+import com.youth.banner.loader.ImageLoader;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -46,7 +56,7 @@ import retrofit2.Call;
 
 
 public class HomeFragment extends BaseFragment<FragmentHomeBinding> implements OnChannelListener {
-
+    private List<String> images;
     private List<Channel> mSelectedChannels = new ArrayList<>();
     private List<Channel> mUnSelectedChannels = new ArrayList<Channel>();
     private List<ChannerlKey> mNetChannels = new ArrayList<>();
@@ -69,9 +79,40 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding> implements O
     @Override
     public void initView() {
         reqData();
+        initBanner();
+        List<String> textList = Arrays.asList("欢迎来到应用", "可在社区中讨论赛事相关信息", "期待您加入我们");
+        initMard(textList);
 //        initChannelData();
 //        initChannelFragments();
 
+    }
+
+    private void initBanner() {
+        images = new ArrayList<>();
+        images.add("file:///android_asset/lottery/16.jpg");
+        images.add("file:///android_asset/lottery/17.jpg");
+        images.add("file:///android_asset/lottery/18.jpg");
+        binding.banner.setImages(images).setImageLoader(new ImageLoader() {
+            @Override
+            public void displayImage(Context context, Object path, ImageView imageView) {
+                imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+                GlideApp.with(ContextHolder.getContext()).load(path).placeholder(R.mipmap.defaule_img).into(imageView);
+            }
+        }).start();
+
+        binding.banner.setOnBannerListener(new OnBannerListener() {
+            @Override
+            public void OnBannerClick(int position) {
+            }
+        });
+    }
+
+    private void initMard(List<String> list) {
+        SimpleMF<String> marqueeFactory2 = new SimpleMF(mContext);
+        marqueeFactory2.setData(list);
+        binding.marqueeView3.setMarqueeFactory(marqueeFactory2);
+        binding.marqueeView3.stopFlipping();
+        binding.marqueeView3.startFlipping();
     }
 
     private void reqData() {
