@@ -88,7 +88,7 @@ public abstract class ZPageLoadCallback<T> extends ZCallback<T> implements Swipe
 
     @Override
     public void onFailure(Call call, Throwable t) {
-        ToastUtil.toast(t.getMessage());
+//        ToastUtil.toast(t.getMessage());
         onFinish(call);
         mAdapter.loadMoreFail();
 

@@ -126,7 +126,7 @@ public abstract class ZCallback<T> implements Callback<T> {
 
     @Override
     public void onFailure(Call<T> call, Throwable t) {
-        ToastUtil.toast(t.getMessage());
+//        ToastUtil.toast(t.getMessage());
         onFinish(call);
         if (mBaseActivity != null) {
             mBaseActivity.showError();
