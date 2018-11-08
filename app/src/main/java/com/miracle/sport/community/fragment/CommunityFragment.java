@@ -48,6 +48,8 @@ public class CommunityFragment extends BaseFragment<FragmentCommunityBinding> {
 
     @Override
     public void initView() {
+        binding.zRadiogroupTop.combineAnother(binding.zRadiogroup);
+        binding.zRadiogroup.combineAnother(binding.zRadiogroupTop);
         binding.zRadiogroup.setUp(getChildFragmentManager(), R.id.containerCommunity, hotPostFragment = new HotPostFragment(), latestPostFragment = new LatestPostFragment());
         binding.recyclerView.setAdapter(myCircleAdapter = new MyCircleAdapterWithAdd());
         initBanner();
@@ -140,6 +142,9 @@ public class CommunityFragment extends BaseFragment<FragmentCommunityBinding> {
             }
         });
         binding.ibMyCircle.setOnClickListener(this);
+
+        binding.scrollView.setViews(binding.zRadiogroup, binding.zRadiogroupTop);
+
     }
 
 

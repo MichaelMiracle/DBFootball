@@ -77,8 +77,12 @@ public class ZRadioGroup extends LinearLayout implements ZRadioButton.OnCheckedC
         tran.commit();
         //代码添加的Fragment，需调用该方法
         onFinishInflate();
-        if (mChildren.length > 0)
+        if (mChildren.length > 0) {
             mChildren[0].performClick();
+            if (another != null) {
+                another.getmChildren()[0].performClick();
+            }
+        }
     }
 
     public void setCheck(int index) {
@@ -90,6 +94,7 @@ public class ZRadioGroup extends LinearLayout implements ZRadioButton.OnCheckedC
     @Override
     public void onCheckedChange(ZRadioButton zRadioButton, int position, boolean isChecked) {
         if (isChecked) {
+            if (another != null) another.getmChildren()[position].performClick();
             if (fragmentManager != null) {
                 FragmentTransaction tran = fragmentManager.beginTransaction();
                 for (int i = 0; i < mFragments.length; i++) {
@@ -108,4 +113,18 @@ public class ZRadioGroup extends LinearLayout implements ZRadioButton.OnCheckedC
         }
     }
 
+    public ZRadioButton[] getmChildren() {
+        return mChildren;
+    }
+
+    public void setmChildren(ZRadioButton[] mChildren) {
+        this.mChildren = mChildren;
+    }
+
+
+    private ZRadioGroup another;
+
+    public void combineAnother(ZRadioGroup another) {
+        this.another = another;
+    }
 }
