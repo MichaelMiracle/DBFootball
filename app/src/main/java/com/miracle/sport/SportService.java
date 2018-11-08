@@ -45,7 +45,7 @@ public interface SportService {
      * 帖子详情
      */
     @Headers({"BaseUrl:zh"})
-    @POST("home/sports/circleDetail")
+    @POST("home/sports/tieziDetail")
     Call<ZResponse<PostDetailBean>> getPostDetail(@Query("id") int id);
 
 
@@ -246,7 +246,7 @@ public interface SportService {
      */
     @Headers({"BaseUrl:zh"})
     @POST("home/sports/addSq")
-    Call<ZResponse> addCircle(@Query("class_id") int class_id, @Query("type") String type);
+    Call<ZResponse> addCircle(@Query("class_id") int class_id, @Query("type") int type);
 
 
 }

@@ -46,7 +46,7 @@ public class CircleFragment extends BaseFragment<RecyclerBinding> {
             public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
                 if (view.getId() == R.id.tvCheck) {
                     CircleBean.ChildBean item = mAdapter.getItem(position);
-                    ZClient.getService(SportService.class).addCircle(item.getId(), item.getFollow() == 1 ? "qx" : null).enqueue(addCircleCallback);
+                    ZClient.getService(SportService.class).addCircle(item.getId(), item.getFollow() == 1 ? 0 : 1).enqueue(addCircleCallback);
 
                 }
             }
