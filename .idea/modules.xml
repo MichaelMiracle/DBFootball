@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/DBFootball.iml" filepath="$PROJECT_DIR$/DBFootball.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/DBFootball.iml" filepath="$PROJECT_DIR$/.idea/DBFootball.iml" />
-      <module fileurl="file://$PROJECT_DIR$/DBLottery.iml" filepath="$PROJECT_DIR$/DBLottery.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/boommenu/boommenu.iml" filepath="$PROJECT_DIR$/boommenu/boommenu.iml" />
       <module fileurl="file://$PROJECT_DIR$/easeui/easeui.iml" filepath="$PROJECT_DIR$/easeui/easeui.iml" />

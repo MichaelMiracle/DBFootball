@@ -55,6 +55,12 @@ public interface SportService {
     @Multipart
     @POST("home/sports/sendTiezi")
     Call<ZResponse> publishPost(@Query("class_id") int class_id, @Query("title") String title, @Query("content") String content, @Part() List<MultipartBody.Part> imgs);
+    /**
+     * 发帖
+     */
+    @Headers({"BaseUrl:zh"})
+    @POST("home/sports/sendTiezi")
+    Call<ZResponse> publishPost(@Query("class_id") int class_id, @Query("title") String title, @Query("content") String content);
 
 
     /**
