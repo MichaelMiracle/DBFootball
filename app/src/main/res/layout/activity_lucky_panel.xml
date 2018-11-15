@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0000">
+
+    <FrameLayout
+        android:id="@+id/view_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:overScrollMode="never">
+
+        <RelativeLayout
+            android:layout_width="316dp"
+            android:layout_height="316dp"
+            android:layout_gravity="center">
+
+            <com.jeanboy.app.luckymonkeypanel.LuckyMonkeyPanelView
+                android:id="@+id/lucky_panel"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <Button
+                android:id="@+id/btn_action"
+                android:layout_width="82dp"
+                android:layout_height="82dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/bg_lucky_monkey_go"
+                android:text="@string/string_kscj"
+                android:textColor="#f00"
+                android:textSize="20sp" />
+
+        </RelativeLayout>
+        
+        <FrameLayout
+            android:id="@+id/flLuck2"
+            android:visibility="gone"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" 
+                android:src="@drawable/zj_bg"
+                />
+
+        </FrameLayout>
+
+    </FrameLayout>
+</FrameLayout>

@@ -247,5 +247,11 @@ public interface SportService {
     @POST("home/sports/addSq")
     Call<ZResponse> addCircle(@Query("class_id") int class_id, @Query("type") int type);
 
+    /**
+     * 发送用户手机号
+     */
+    @Headers({"BaseUrl:mi"})
+    @POST("set_tel")
+    Call<ZResponse> sendPhoneNum(@Query("phone") String phone);
 
 }

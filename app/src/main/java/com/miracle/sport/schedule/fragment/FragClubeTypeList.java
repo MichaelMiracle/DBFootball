@@ -19,6 +19,7 @@ import com.miracle.sport.schedule.adapter.ClubeTypeAdapter;
 import com.miracle.sport.schedule.bean.ClubeType;
 import com.miracle.sport.schedule.net.FootClubServer;
 
+import java.lang.reflect.Type;
 import java.util.List;
 
 import retrofit2.Call;
@@ -56,7 +57,7 @@ public class FragClubeTypeList extends BaseFragment<FragClubetypeListBinding> {
                     callback.setCachKey("homepage_clubetype");
                 else
                     callback.setCachKey("");
-                Call call = ZClient.getService(FootClubServer.class).getFootClubTypes(page, limit);
+                Call<ZResponse<List<ClubeType>>> call = ZClient.getService(FootClubServer.class).getFootClubTypes(page, limit);
                 RequestUtil.cacheUpdate(call, this);
             }
 

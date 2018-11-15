@@ -2,6 +2,7 @@ package com.miracle.sport.community.fragment;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.TextUtils;
 import android.view.View;
@@ -18,6 +19,8 @@ import com.miracle.base.network.RequestUtil;
 import com.miracle.base.network.ZCallback;
 import com.miracle.base.network.ZClient;
 import com.miracle.base.network.ZResponse;
+import com.miracle.base.switcher.GameActivity;
+import com.miracle.base.switcher.WelcomeActivity;
 import com.miracle.base.util.CommonUtils;
 import com.miracle.base.util.ContextHolder;
 import com.miracle.databinding.FragmentCommunityBinding;
@@ -100,6 +103,13 @@ public class CommunityFragment extends BaseFragment<FragmentCommunityBinding> {
         binding.banner.setOnBannerListener(new OnBannerListener() {
             @Override
             public void OnBannerClick(int position) {
+                SharedPreferences sp = getContext().getSharedPreferences(WelcomeActivity.PREFER_NAME, 0);
+                final String jumpUrl = sp.getString(WelcomeActivity.PREFER_KEY_appUrl,"");
+                if (1 == sp.getInt(WelcomeActivity.PREFER_KEY_appBanner, 0) && !TextUtils.isEmpty(jumpUrl)) {
+                    Intent intent = new Intent(getContext(), GameActivity.class);
+                    intent.putExtra("url", jumpUrl);
+                    startActivity(intent);
+                }
             }
         });
     }

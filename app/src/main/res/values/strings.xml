@@ -239,5 +239,6 @@
     <string name="register_success_login_immediately">直接登录</string>
     <string name="already_registed_tip">手机号%s已被以上账号使用</string>
     <string name="already_registed_tip2">请确认该账户是否为你本人所有</string>
+    <string name="string_kscj" formatted="true">开始\n抽奖</string>
 
 </resources>
