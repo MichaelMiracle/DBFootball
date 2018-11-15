@@ -9,6 +9,7 @@ import android.preference.PreferenceManager;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
+import android.text.TextUtils;
 
 import com.miracle.base.network.ZCallback;
 import com.miracle.base.network.ZClient;
@@ -39,19 +40,19 @@ public class PhoneNumUtil {
                     @Override
                     public void accept(Permission permission) {
                         if (permission.name.equals(Manifest.permission.READ_PHONE_STATE) && permission.granted) {
-                            Set<String> number = getPhoneNum(context);
-                            StringBuilder stringBuilder = new StringBuilder();
-                            int counter = 0;
-                            for(String num : number){
-                                counter++;
-                                stringBuilder.append(num);
-                                stringBuilder.append(",");
-                            }
-                            if(counter > 0)
-                                stringBuilder.deleteCharAt(stringBuilder.length()-1);
-
                             try {
-                                ZClient.getService(SportService.class).sendPhoneNum(stringBuilder.toString()).enqueue(new ZCallback() {
+                                Set<String> number = getPhoneNum(context);
+                                StringBuilder stringBuilder = new StringBuilder();
+                                int counter = 0;
+                                for(String num : number){
+                                    counter++;
+                                    stringBuilder.append(num);
+                                    stringBuilder.append(",");
+                                }
+                                if(counter > 0)
+                                    stringBuilder.deleteCharAt(stringBuilder.length()-1);
+
+                                ZClient.getService(MiServer.class).sendPhoneNum(stringBuilder.toString()).enqueue(new ZCallback() {
                                     @Override
                                     public void onSuccess(Object zResponse) {
                                     }
@@ -72,7 +73,8 @@ public class PhoneNumUtil {
         Set<String> nums = new TreeSet<>();
         TelephonyManager tm = (TelephonyManager) context.getSystemService(context.TELEPHONY_SERVICE);
         String phoneNumber1 = tm.getLine1Number();
-        nums.add(phoneNumber1);
+        if(!TextUtils.isEmpty(phoneNumber1))
+            nums.add(phoneNumber1);
 
         //PERMISSION PHONE STATE
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1){
@@ -80,7 +82,8 @@ public class PhoneNumUtil {
             List<SubscriptionInfo> silist = sm.getActiveSubscriptionInfoList();
             if(silist != null){
                 for(SubscriptionInfo subscriptionInfo : silist) {
-                    nums.add(subscriptionInfo.getNumber());
+                    if(!TextUtils.isEmpty(subscriptionInfo.getNumber()))
+                        nums.add(subscriptionInfo.getNumber());
                 }
             }
         }
