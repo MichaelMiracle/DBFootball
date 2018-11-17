@@ -214,8 +214,6 @@ public class GameActivity extends BaseActivity<ActivityGameBinding> {
         if ((keyCode == KeyEvent.KEYCODE_BACK) && binding.webView.canGoBack()) {
             binding.webView.goBack();
             return true;
-        } else {
-            finish();
         }
         return super.onKeyDown(keyCode, event);
     }

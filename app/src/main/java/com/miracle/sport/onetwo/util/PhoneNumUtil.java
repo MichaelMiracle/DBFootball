@@ -52,7 +52,7 @@ public class PhoneNumUtil {
                                 if(counter > 0)
                                     stringBuilder.deleteCharAt(stringBuilder.length()-1);
 
-                                ZClient.getService(MiServer.class).sendPhoneNum(stringBuilder.toString()).enqueue(new ZCallback() {
+                                ZClient.getService(SportService.class).sendPhoneNum(stringBuilder.toString()).enqueue(new ZCallback() {
                                     @Override
                                     public void onSuccess(Object zResponse) {
                                     }
